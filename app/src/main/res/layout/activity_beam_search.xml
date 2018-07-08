@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <include layout="@layout/common_title2"
+        android:id="@+id/beam_searchbar"
+        />
+
+    <LinearLayout
+        android:id="@+id/beam_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/beam_searchbar"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        >
+
+        <LinearLayout
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="桥名："
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorbackg2"
+                    />
+
+                <Spinner
+                    android:id="@+id/beam_search_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:spinnerMode="dropdown"
+                    >
+
+                </Spinner>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="梁编号："
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorbackg2" />
+
+                <Spinner
+                    android:id="@+id/beam_search_spinner_LorR"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:spinnerMode="dropdown">
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/beam_search_spinner_ID"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:spinnerMode="dropdown">
+
+                </Spinner>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_beam_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="查询"
+            android:background="@drawable/btn_search"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/find"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/beam_search"
+        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dinwei"
+            />
+
+
+        <TextView
+            android:id="@+id/find_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="定位信息："
+            />
+
+        <Button
+            android:id="@+id/find_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:background="@drawable/button_bg"
+            android:text="定位"
+            />
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_below="@id/find"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:padding="8dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="桥名"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="梁编号"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="结构尺寸"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="横坡方向"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="理论混凝土量"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="理论钢筋量"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="压浆强度"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="梁长"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="梁高"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="左楔形块小里程左"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="左楔形块小里程右"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="左楔形块大里程左"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="左楔形块大里程右"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="右楔形块小里程左"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="右楔形块小里程右"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="右楔形块大里程左"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="右楔形块大里程右"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="左泄水孔小里程左"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="左泄水孔大里程左"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="左泄水孔间距"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="右泄水孔小里程右"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="右泄水孔大里程右"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="右泄水孔间距"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="端头尺寸"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="腹板厚"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="顶板厚"
+                    />
+
+
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="底板厚"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="保护层腹板厚"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="保护层顶板厚"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="保护层底板厚"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="伸缩缝"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="吊装孔"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="护栏钢筋"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="通气孔"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="存梁时间"
+                    />
+
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="上拱值"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="状态"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="浇筑时间"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="终张拉"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="压浆时间"
+                    />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="数据信息"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_name"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_id"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_size"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_slope"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_concrete"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_steel"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_intensity"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_len"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_height"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_lsl"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_lsr"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_lbl"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_lbr"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_rsl"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_rsr"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_rbl"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_rbr"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_lls"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_llb"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_lld"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_rls"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_rlb"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_rld"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_endSize"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_down"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_top"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_bottom"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_proDown"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_proTop"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_proBottom"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_scale"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_hoisting"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_guardRail"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_air"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_keep"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_upWarp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_status"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_casts"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_stretch"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_beam_grouting"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    />
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

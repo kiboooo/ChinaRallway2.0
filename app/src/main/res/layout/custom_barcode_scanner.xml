@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--BarcodeView提供相机视图预览功能和图片解码功能-->
+    <com.journeyapps.barcodescanner.BarcodeView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/zxing_barcode_surface"/>
+
+    <!--在BarcodeView视图之上，提供取景框，外部透明背景 ，扫描激光线-->
+    <com.atguigu.chinarallway.Scanner.CustomViewfinderView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/zxing_viewfinder_view"/>
+
+    <!--底部提示内容-->
+    <TextView
+        android:id="@+id/zxing_status_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="120dp"
+        android:background="@color/zxing_transparent"
+        android:text="@string/zxing_msg_default_status"
+        android:textColor="@color/zxing_status_text"/>
+
+</FrameLayout>

@@ -1,0 +1,1171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/common_title2" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@drawable/button_bg3"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="桥名："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_name"
+                    android:labelFor="@+id/etbeam_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:inputType="none"
+                    android:gravity="center"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="梁编号："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_id"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="none"
+                    android:labelFor="@+id/etbeam_id" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="结构尺寸："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_size"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="none"
+                    android:labelFor="@+id/etbeam_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="横坡方向(%)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_slope"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:hint="0-100精确到小数点后一位"
+                    android:inputType="none"
+                    android:labelFor="@+id/etbeam_slope"
+                    android:maxLength="5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="理论混凝土量："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_concrete"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="textPersonName"
+                    android:labelFor="@+id/etbeam_concrete"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="理论钢筋量："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_steel"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="phone"
+                    android:labelFor="@+id/etbeam_steel"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="压浆强度："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_intensity"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_intensity"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/loginback"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="梁长(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_len"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:labelFor="@+id/etbeam_len"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="梁高(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_height"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_height"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="左楔形块小里程左(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_lsl"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_lsl"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="左楔形块小里程右(mm)："
+                    android:textSize="16sp"
+
+                    />
+
+                <EditText
+                    android:id="@+id/etbeam_lsr"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_lsr"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/loginback" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/loginback" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="左楔形块大里程左(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_lbl"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_lbl"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="左楔形块大里程右(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_lbr"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_lbr"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="右楔形块小里程左(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_rsl"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_rsl"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="右楔形块小里程右(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_rsr"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_rsr"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="右楔形块大里程左(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_rbl"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="textPersonName"
+                    android:labelFor="@+id/etbeam_rbl"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="右楔形块大里程右(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_rbr"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="textPersonName"
+                    android:labelFor="@+id/etbeam_rbr"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="左泄水孔小里程左(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_lls"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="none"
+                    android:labelFor="@+id/etbeam_lls"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="左泄水孔大里程左(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_llb"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:labelFor="@+id/etbeam_llb"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="左泄水孔间距(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_lld"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:labelFor="@+id/etbeam_lld"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="右泄水孔小里程右(mm)："
+                    android:textSize="16sp"
+
+                    />
+
+                <EditText
+                    android:id="@+id/etbeam_rls"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:labelFor="@+id/etbeam_rls"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="右泄水孔大里程右(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_rlb"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:labelFor="@+id/etbeam_rlb"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="右泄水孔间距(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_rld"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_rld"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="端头尺寸(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_endsize"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_endsize"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/loginback" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="腹板厚(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_down"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_down"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="顶板厚(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_top"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_top"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="底板厚(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_bottom"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_bottom"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="保护层腹板厚(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_prodown"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_prodown"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="保护层顶板厚(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_protop"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="textPersonName"
+                    android:labelFor="@+id/etbeam_protop"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="保护层底板厚(mm)："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_probottom"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="textPersonName"
+                    android:labelFor="@+id/etbeam_probottom"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="伸缩缝："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_scale"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="none"
+                    android:labelFor="@+id/etbeam_scale" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="吊装孔："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_hoisting"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:labelFor="@+id/etbeam_hoisting" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="护栏钢筋："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_guardrail"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:labelFor="@+id/etbeam_guardrail" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="通气孔："
+                    android:textSize="16sp"
+
+                    />
+
+                <EditText
+                    android:id="@+id/etbeam_air"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:labelFor="@+id/etbeam_air"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="存梁时间/天："
+                    android:textSize="16sp" />
+
+
+                <EditText
+                    android:id="@+id/etbeam_keep"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:labelFor="@+id/etbeam_keep"
+                    android:maxLength="4"
+                    android:hint="请输入整数"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="上拱值："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_upward"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_upward"
+                    android:maxLength="5"
+                    android:hint="请保留一位小数"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="状态："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_status"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_status"
+                    android:hint="（与制作）"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="二维码："
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/ivbeam_qrcode"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/picture_update" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="浇筑时间："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_casts"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:labelFor="@+id/etbeam_casts" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="终张拉："
+                    android:textSize="16sp"
+
+                    />
+
+                <EditText
+                    android:id="@+id/etbeam_stretch"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:labelFor="@+id/etbeam_stretch" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="压浆时间："
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etbeam_grouting"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:labelFor="@+id/etbeam_grouting" />
+
+            </LinearLayout>
+
+
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@drawable/button_bg4" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btbeam_put"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/btn_push"
+                    android:gravity="center"
+                    android:text="提交"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

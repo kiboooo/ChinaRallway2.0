@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <include layout="@layout/common_title2"/>
+
+    <LinearLayout
+        android:id="@+id/warning_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        >
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:ems="1"
+            android:text="空置率预警值/%"
+            />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barchart_warning"
+            android:layout_width="230dp"
+            android:layout_height="300dp"
+            >
+
+        </com.github.mikephil.charting.charts.BarChart>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pedestal_normo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/normo"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="所有台座空置率正常"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/pedestal_warning1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/warning1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="制梁台座空置率异常"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/pedestal_warning2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/warning2"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="存梁台座空置率异常"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/X_textView"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="梁场台座情况" />
+
+</LinearLayout>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.atguigu.chinarallway.Activity.BrowseVideoActivity"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/common_title2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请选择梁板数据"
+            android:textSize="16sp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="桥名："
+                android:textSize="16sp"
+                />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/beam_select"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:layout_weight="3"
+                >
+            </android.support.v7.widget.AppCompatSpinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="梁编号："
+                android:textSize="16sp"
+                />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/beam_LR_select"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:layout_weight="1"
+                >
+            </android.support.v7.widget.AppCompatSpinner>
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/beam_ID_select"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:layout_weight="2"
+                >
+            </android.support.v7.widget.AppCompatSpinner>
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请选择视频数据"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            />
+        <android.support.v7.widget.AppCompatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/video_select"
+            android:layout_marginTop="8dp"
+            >
+        </android.support.v7.widget.AppCompatSpinner>
+
+        <Button
+            android:layout_marginTop="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="下载视频"
+            android:id="@+id/download_button"
+            android:background="@color/colorPrimary"
+            android:textColor="#ffffff"
+            android:foreground="?selectableItemBackgroundBorderless"
+            />
+
+        <Button
+            android:layout_marginTop="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="查看已下载的视频"
+            android:id="@+id/look_download_dir"
+            android:background="@color/colorPrimary"
+            android:textColor="#ffffff"
+            android:foreground="?selectableItemBackgroundBorderless" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

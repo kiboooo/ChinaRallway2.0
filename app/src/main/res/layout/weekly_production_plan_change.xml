@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <include layout="@layout/common_title2" />
+
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_logout"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="温馨提示：只可以修改制梁顺序哟，请从1开始递增连续排序，注意不要重序！"
+                    android:gravity="center|start"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="日期"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="梁编号"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="桥名"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="制梁顺序"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="制梁台号"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="存梁台号"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="存梁位置"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="审核状态"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/ProducerPlanWeeksChange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/Up"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="300dp"
+                android:layout_marginEnd="300dp"
+                android:text="上传修改"
+                android:textSize="16sp"
+                android:background="@drawable/btn_search"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="250dp"
+                android:layout_marginEnd="250dp"
+                >
+
+                <Button
+                    android:id="@+id/PageUp2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bg4"
+                    android:text="上一页"
+                    android:textSize="24sp"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/PPPage2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
+                    />
+
+
+                <Button
+                    android:id="@+id/PageDown2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bg3"
+                    android:text="下一页"
+                    android:textSize="24sp"
+                    android:gravity="center"
+                    />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+
+</LinearLayout>

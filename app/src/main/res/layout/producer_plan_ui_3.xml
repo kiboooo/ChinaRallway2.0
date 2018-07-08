@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+               <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/user_logout"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp">
+
+                            <TextView
+                                android:layout_width="210dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/table"
+                                android:gravity="center"
+                                android:text="混凝土保护层厚度"
+                                android:textColor="#000000"
+                                android:textSize="14sp" />
+                            <TextView
+                                android:layout_width="281dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/table"
+                                android:gravity="center"
+                                android:text="预埋件情况"
+                                android:textColor="#000000"
+                                android:textSize="14sp" />
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/table"
+                                android:gravity="center"
+                                android:text="腹板（mm）"
+                                android:textColor="#000000"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/table"
+                                android:gravity="center"
+                                android:text="底板（mm）"
+                                android:textColor="#000000"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/table"
+                                android:gravity="center"
+                                android:text="顶板（mm）"
+                                android:textColor="#000000"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/table"
+                                android:gravity="center"
+                                android:text="伸缩缝"
+                                android:textColor="#000000"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/table"
+                                android:gravity="center"
+                                android:text="吊装孔"
+                                android:textColor="#000000"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/table"
+                                android:gravity="center"
+                                android:text="护栏预埋钢筋"
+                                android:textColor="#000000"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/table"
+                                android:gravity="center"
+                                android:text="通气孔"
+                                android:textColor="#000000"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/ProducerRecyclerView_UI3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+</LinearLayout>

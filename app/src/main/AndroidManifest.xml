@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+        package="com.atguigu.chinarallway">
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name = "android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.atguigu.chinarallway.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
+
+        <activity
+            android:name=".Activity.LoginActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- 配置 点击通知 和 下载完成 两个 action -->
+                <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED"/>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.ManagerActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Activity.ProducerActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Activity.BeamfieldActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Activity.BeamTechnicianActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            />
+
+        <activity
+            android:name=".Activity.MyUserActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            />
+
+        <activity
+            android:name=".Chart.StoreActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            />
+
+
+        <activity
+            android:name=".Chart.StorPositionActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".Activity.LaboratoryActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".Chart.MaxActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Chart.WarningActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Chart.ProtectActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Chart.RebarAmountActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Activity.FactorySearchActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".Activity.FactoryDataActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"/>
+
+
+        <activity
+            android:name=".Activity.LabDataActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".Activity.LabDataSearchActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".Scanner.ScanDisplay"
+            android:theme="@style/NoActionBar" />
+
+        <!-- 调整二维码扫描界面为竖屏 -->
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="portrait"
+            tools:replace="screenOrientation" />
+        <activity
+            android:name=".Scanner.CustomCaptureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".Activity.MakePlanActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".Activity.ModifyplanActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Activity.BeamDataSearchActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".Activity.UploadRadioActivity"
+            android:label="录制视频"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.RepairBeamActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".Activity.LabDataChange"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".Activity.FactoryChangeDataActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".Activity.ProducerPlanActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            />
+
+        <activity
+            android:name=".Activity.ProductionPlanCheckOrAudit"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Activity.ProductionPlanChange"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".Activity.SetServerParamActivity" />
+
+        <activity android:name=".Activity.BrowseVideoActivity"
+            android:theme="@style/NoActionBar"
+            >
+
+        </activity>
+    </application>
+
+</manifest>

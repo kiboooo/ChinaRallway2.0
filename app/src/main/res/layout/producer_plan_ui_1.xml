@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/user_logout"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="架梁编号"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="梁长（mm）"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="梁高（mm）"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="横坡方向（%）"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="端头尺寸（mm）"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/table"
+                android:gravity="center"
+                android:text="腹板厚（mm）"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+                <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/table"
+                android:gravity="center"
+                android:text="顶板厚（mm）"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+                <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/table"
+                android:gravity="center"
+                android:text="底板厚（mm）"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+                <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+
+                android:background="@drawable/table"
+                android:gravity="center"
+                android:text="混凝土量（M^3）"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+                <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/table"
+                android:gravity="center"
+                android:text="制梁顺序"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+                <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/table"
+                android:gravity="center"
+                android:text="制梁位置"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+                <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/table"
+                android:gravity="center"
+                android:text="存梁位置"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/ProducerRecyclerView_UI1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+</LinearLayout>

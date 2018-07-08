@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <include layout="@layout/common_title2"/>
+
+    <LinearLayout
+        android:id="@+id/store1"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        >
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:layout_weight="1"
+            android:id="@+id/piechart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.github.mikephil.charting.charts.PieChart>
+
+        <View
+            android:layout_weight="3.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/store2"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginEnd="20dp"
+        >
+
+        <View
+            android:layout_weight="3.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:layout_weight="1"
+            android:id="@+id/piechart2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        </com.github.mikephil.charting.charts.PieChart>
+
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

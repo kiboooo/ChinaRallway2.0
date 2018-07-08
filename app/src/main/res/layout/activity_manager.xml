@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#fff">
+
+    <include layout="@layout/common_title"/>
+
+        <LinearLayout
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="false">
+
+        <LinearLayout
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linear1"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginRight="10dp"
+                    app:cardElevation="8dp"
+                    >
+
+
+                    <LinearLayout
+                        android:id="@+id/layout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/image1"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            android:src="@drawable/warning"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:textColor="#494949"
+                            android:text="查看预警"
+                            android:layout_alignParentBottom="true" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    app:cardElevation="8dp"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/layout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/image2"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            android:src="@drawable/bridge"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:textColor="#494949"
+                            android:text="存梁统计"/>
+
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear2"
+                android:layout_marginTop="6dp"
+                android:layout_below="@id/linear1"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    app:cardElevation="8dp"
+                    android:layout_marginRight="10dp"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/layout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/image3"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            android:src="@drawable/robot"
+                            android:layout_marginBottom="5dp"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:textColor="#494949"
+                            android:text="台位占用统计"/>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    app:cardElevation="8dp"
+                    >
+
+
+                    <LinearLayout
+                        android:id="@+id/layout4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/image4"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            android:layout_marginBottom="5dp"
+                            android:src="@drawable/max"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:textColor="#494949"
+                            android:text="上拱值统计"/>
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear3"
+                android:layout_marginTop="6dp"
+                android:layout_below="@id/linear2"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    app:cardElevation="8dp"
+                    android:layout_marginRight="10dp"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/layout5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/image5"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            android:src="@drawable/protect"
+                            android:layout_marginBottom="5dp"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:textColor="#494949"
+                            android:text="保护层厚度统计"/>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    app:cardElevation="8dp"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/layout6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/image6"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            android:src="@drawable/iron"
+                            android:layout_marginBottom="5dp"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:textColor="#494949"
+                            android:text="钢筋量统计"/>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#cccc"/>
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bnv_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/navigation"
+        >
+
+    </android.support.design.widget.BottomNavigationView>
+
+
+
+
+</LinearLayout>

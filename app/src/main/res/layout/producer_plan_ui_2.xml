@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_logout"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="480dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="楔形块尺寸"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="362dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="泄水孔尺寸"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+                <TextView
+                    android:layout_width="240dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="楔形块（左）"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="240dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="楔形块（右）"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="泄水孔（左）"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="182dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="泄水孔（右）"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="小里程"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="大里程"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="小里程"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="大里程"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="距翼缘板边"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="泄水孔之间"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="距翼缘板边"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="62dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="泄水孔之间"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="小里程左(mm)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="小里程右(mm)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="大里程左(mm)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="大里程右(mm)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="小里程左(mm)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="小里程右(mm)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="大里程左(mm)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="大里程右(mm)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="小里程左(mm)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="大里程左(mm)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="间距(mm)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="小里程右(mm)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="大里程右(mm)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table"
+                    android:gravity="center"
+                    android:text="间距(mm)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/ProducerRecyclerView_UI2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+</LinearLayout>

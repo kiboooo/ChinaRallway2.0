@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary">
+
+
+        <TextView
+            android:id="@+id/tv_title_name"
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:text="管理员:技师张"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="2dp"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"/>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/actionbar_scan_ui"
+            >
+
+            <ImageView
+                android:id="@+id/iv_scaner"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/scan"
+                />
+        </FrameLayout>
+
+    </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/colorbackg2"
+            />
+
+
+</LinearLayout>

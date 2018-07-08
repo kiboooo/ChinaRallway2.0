@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        >
+
+        <TextView
+            android:id="@+id/producerBID"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/producerLen"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_alignTop="@id/producerBID"
+            android:layout_toEndOf="@id/producerBID"
+            />
+
+        <TextView
+            android:id="@+id/producerHeight"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_alignTop="@id/producerBID"
+            android:layout_toEndOf="@id/producerLen"
+            />
+
+        <TextView
+            android:id="@+id/producerSlope"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_alignTop="@id/producerBID"
+            android:layout_toEndOf="@id/producerHeight"
+            />
+
+        <TextView
+            android:id="@+id/producerEndSize"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_alignTop="@id/producerBID"
+            android:layout_toEndOf="@id/producerSlope"
+            />
+
+        <TextView
+            android:id="@+id/producerDown"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_alignTop="@id/producerBID"
+            android:layout_toEndOf="@id/producerEndSize"
+            />
+
+        <TextView
+            android:id="@+id/producerTop"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_alignTop="@id/producerBID"
+            android:layout_toEndOf="@id/producerDown"
+            />
+
+        <TextView
+            android:id="@+id/producerBottom"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_alignTop="@id/producerBID"
+            android:layout_toEndOf="@id/producerTop"
+            />
+
+        <TextView
+            android:id="@+id/producerConcrete"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_alignTop="@id/producerBID"
+            android:layout_toEndOf="@id/producerBottom"
+            />
+
+        <TextView
+            android:id="@+id/producerMakeOrder"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_alignTop="@id/producerBID"
+            android:layout_toEndOf="@id/producerConcrete"
+            />
+
+        <TextView
+            android:id="@+id/producerMakePosID"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_alignTop="@id/producerBID"
+            android:layout_toEndOf="@id/producerMakeOrder"/>
+
+        <TextView
+            android:id="@+id/producerPos"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/table"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_alignTop="@id/producerBID"
+            android:layout_toEndOf="@id/producerMakePosID"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>
