@@ -1,53 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:orientation="vertical">
 
-    <include layout="@layout/common_title2"
+    <include
         android:id="@+id/repair_beam_toolbar"
-        />
+        layout="@layout/common_title2" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_margin="10dp"
-        >
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_weight="4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:layout_weight="4"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/beam_search"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="桥名："
                     android:gravity="center"
-                    android:textSize="16sp"
+                    android:text="桥名："
                     android:textColor="@color/colorbackg2"
-                    />
+                    android:textSize="16sp" />
 
                 <Spinner
                     android:id="@+id/beam_search_spinner"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:spinnerMode="dropdown"
-                    >
+                    android:spinnerMode="dropdown">
 
                 </Spinner>
 
@@ -62,108 +56,223 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="梁编号："
                     android:gravity="center"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorbackg2" />
+                    android:text="梁编号："
+                    android:textColor="@color/colorbackg2"
+                    android:textSize="16sp" />
 
                 <Spinner
                     android:id="@+id/beam_search_spinner_LorR"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:spinnerMode="dropdown"></Spinner>
+
+                <Spinner
+                    android:id="@+id/beam_search_spinner_ID"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
                     android:spinnerMode="dropdown">
+
                 </Spinner>
-
-                    <Spinner
-                        android:id="@+id/beam_search_spinner_ID"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:spinnerMode="dropdown">
-
-                    </Spinner>
             </LinearLayout>
 
         </LinearLayout>
 
 
         <Button
-        android:id="@+id/btn_beam_search"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="查询"
-        android:background="@drawable/btn_search"
-        />
+            android:id="@+id/btn_beam_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/btn_search"
+            android:text="查询" />
     </LinearLayout>
 
 
-
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/user_logout"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="48dp">
+        android:orientation="horizontal">
 
         <TextView
 
-            android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="48dp"
+            android:layout_weight="2"
             android:gravity="center"
             android:text="梁板状态："
             android:textColor="#000000"
-            android:textSize="24sp"
-            />
+            android:textSize="24sp" />
 
         <TextView
-            android:textColor="#000000"
-            android:gravity="center"
             android:id="@+id/beam_buff"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_weight="3"
+            android:gravity="center"
+            android:textColor="#000000"
             android:textSize="24sp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:padding="8dp">
 
         <Button
             android:id="@+id/beam_enter"
-            android:background="@drawable/btn_search"
-            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_search"
             android:gravity="center"
             android:text="梁板制作完成"
-            android:textSize="24sp"
-            android:layout_marginRight="16dp"
-            />
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/beam_leave"
-            android:background="@drawable/beam_leave"
-            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/beam_leave"
             android:gravity="center"
             android:text="梁板已经出场"
-            android:textSize="24sp"
-            />
-
+            android:textSize="24sp" />
 
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/user_logout"
+        android:orientation="horizontal"
+        android:padding="2dp">
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:text="梁板状态:"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/bean_state"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:entries="@array/beamState"
+            android:gravity="center"
+            android:layout_weight="2"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            />
+
+        <Button
+            android:id="@+id/state_submit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:textSize="18sp"
+            android:background="@drawable/btn_search"
+            android:text="提交" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/user_logout"
+        android:layout_margin="8dp"
+        >
+
+        <LinearLayout
+            android:layout_weight="3.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="4dp"
+            android:layout_marginStart="5dp"
+            >
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="存梁台座："
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:padding="2dp"
+                    />
+
+                <Spinner
+                    android:id="@+id/storeBeam_spinner"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="match_parent"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="存梁位置："
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:padding="2dp"
+                    />
+
+                <Spinner
+                    android:id="@+id/storeBeamPosition_spinner"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="match_parent"/>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/store_submit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:textSize="18sp"
+            android:background="@drawable/btn_search"
+            android:paddingLeft="4dp"
+            android:text="提交" />
+
+    </LinearLayout>
 
 </LinearLayout>
