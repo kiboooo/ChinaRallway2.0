@@ -170,7 +170,7 @@
             android:textSize="20sp" />
 
         <Spinner
-            android:id="@+id/bean_state"
+            android:id="@+id/beam_state_spinner"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:entries="@array/beamState"
