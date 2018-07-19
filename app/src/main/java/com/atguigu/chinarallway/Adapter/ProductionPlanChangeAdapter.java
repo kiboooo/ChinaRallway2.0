@@ -1,10 +1,13 @@
 package com.atguigu.chinarallway.Adapter;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.atguigu.chinarallway.Bean.AllStaticBean;
@@ -19,35 +22,54 @@ import java.util.List;
 
 public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<ProductionPlanChangeAdapter.ViewHolder> {
 
-
-    private List<TaskData> TaskDatas = new ArrayList<>();
+    private Context mContext;
+    private TaskData[] TaskDatas = null;
+//    private List<TaskData> TaskDatas = new ArrayList<>();
     private List<ViewHolder> viewHolder = new ArrayList<>();
 
-    public ProductionPlanChangeAdapter(List<TaskData> taskDatas) {
+//    public ProductionPlanChangeAdapter(List<TaskData> taskDatas) {
+//        this.TaskDatas = taskDatas;
+//    }
+    public ProductionPlanChangeAdapter(TaskData[] taskDatas, Context context) {
         this.TaskDatas = taskDatas;
+        mContext = context;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView etProducerTaskDate;
         TextView etProducerBName;
         TextView etProducerBId;
-        EditText etProducerMakeOrder;
+//        EditText etProducerMakeOrder;
+        TextView etProducerMakeOrder;
         TextView etProducerMakePosID;
         TextView etProducerPedID;
         TextView etProducerPOS;
         TextView etProducerPemit;
+        Button deleteButton;
+        Button changeButton;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            etProducerTaskDate = (TextView) itemView.findViewById(R.id.etProducerTaskDate);
-            etProducerBName = (TextView) itemView.findViewById(R.id.etProducerBName);
-            etProducerBId = (TextView) itemView.findViewById(R.id.etProducerBId);
-            etProducerMakeOrder = (EditText) itemView.findViewById(R.id.etProducerMake_Order);
-            etProducerMakePosID =  itemView.findViewById(R.id.etProducerMake_PosID);
-            etProducerPedID =  itemView.findViewById(R.id.etProducerPedID);
-            etProducerPOS = itemView.findViewById(R.id.etProducerPOS);
-            etProducerPemit = (TextView) itemView.findViewById(R.id.etProducerPemit);
+//            etProducerTaskDate = (TextView) itemView.findViewById(R.id.etProducerTaskDate);
+//            etProducerBName = (TextView) itemView.findViewById(R.id.etProducerBName);
+//            etProducerBId = (TextView) itemView.findViewById(R.id.etProducerBId);
+//            etProducerMakeOrder = (EditText) itemView.findViewById(R.id.etProducerMake_Order);
+//            etProducerMakePosID =  itemView.findViewById(R.id.etProducerMake_PosID);
+//            etProducerPedID =  itemView.findViewById(R.id.etProducerPedID);
+//            etProducerPOS = itemView.findViewById(R.id.etProducerPOS);
+//            etProducerPemit = (TextView) itemView.findViewById(R.id.etProducerPemit);
+
+            etProducerTaskDate = (TextView) itemView.findViewById(R.id.dateText);
+            etProducerBName = (TextView) itemView.findViewById(R.id.nameText);
+            etProducerBId = (TextView) itemView.findViewById(R.id.numText);
+            etProducerMakeOrder =itemView.findViewById(R.id.buildText);
+            etProducerMakePosID =  itemView.findViewById(R.id.buildNumberText);
+            etProducerPedID =  itemView.findViewById(R.id.saveText);
+            etProducerPOS = itemView.findViewById(R.id.saveLocationText);
+            etProducerPemit = (TextView) itemView.findViewById(R.id.checkState);
+            deleteButton = itemView.findViewById(R.id.delete);
+            changeButton = itemView.findViewById(R.id.change);
         }
     }
 
@@ -55,15 +77,17 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View mV = LayoutInflater.from(parent.getContext()).inflate(R.layout.weekly_production_change_item, parent, false);
+//        View mV = LayoutInflater.from(parent.getContext()).inflate(R.layout.weekly_production_change_item, parent, false);
+        View mV = LayoutInflater.from(parent.getContext()).inflate(R.layout.producer_plan_item, parent, false);
         ViewHolder vH = new ViewHolder(mV);
         viewHolder.add(vH);
         return vH;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        TaskData data = TaskDatas.get(position);
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        TaskData data = TaskDatas[position];
+//        TaskData data = TaskDatas.get(position);
         holder.etProducerTaskDate.setText(AllStaticBean.formatter.format(data.getTaskDate()));
         holder.etProducerBName.setText(data.getbName());
         holder.etProducerBId.setText(String.valueOf(data.getbID()));
@@ -71,13 +95,46 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
         holder.etProducerMakePosID.setText(data.getMakePosId());
         holder.etProducerPedID.setText(String.valueOf(data.getPedID()));
         holder.etProducerPOS.setText(data.getPos());
-        holder.etProducerPemit.setText("未审核");
+        holder.etProducerPemit.setText(data.isPermit()?"审核":"未审核");
+        holder.etProducerPemit.setSelected(data.isPermit());
+        holder.changeButton.setVisibility(View.VISIBLE);
+        holder.changeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //直接跳转到修改的Dialog
+            }
+        });
+        holder.deleteButton.setVisibility(View.VISIBLE);
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog alertDialog = new AlertDialog.Builder(mContext)
+                        .setTitle("温馨提示：")
+                        .setMessage("由于删除后，有可能会影响到整体的生产计划，确认继续删除吗？")
+                        .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //执行删除，刷新页表数据
+                                AllStaticBean.RemoveArray(position);
+                                notifyItemRemoved(position);
+                                notifyDataSetChanged();
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        })
+                        .create();
+                alertDialog.show();
+            }
+        });
         holder.itemView.setTag(position);
     }
 
     @Override
     public int getItemCount() {
-        return TaskDatas.size();
+        return TaskDatas.length;
     }
 
     public TaskData GetTaskData(int position) throws ParseException {

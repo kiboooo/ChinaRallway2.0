@@ -52,12 +52,12 @@ public class ProductionPlanChange extends AppCompatActivity implements View.OnCl
     private final int GOAuditSUCCUSS = 4003;
     private final int ChangeUpdateFALL = 4002;
     private final int GOAuditFALL = 4004;
-    @Bind(R.id.PageUp2)
-    Button PageUp2;
-    @Bind(R.id.PPPage2)
-    TextView PPPage2;
-    @Bind(R.id.PageDown2)
-    Button PageDown2;
+//    @Bind(R.id.PageUp2)
+//    Button PageUp2;
+//    @Bind(R.id.PPPage2)
+//    TextView PPPage2;
+//    @Bind(R.id.PageDown2)
+//    Button PageDown2;
 
     private LoadingDialog loadingDialog;
     private ProductionPlanChangeAdapter adapter;
@@ -141,41 +141,41 @@ public class ProductionPlanChange extends AppCompatActivity implements View.OnCl
 
                 break;
 
-            case R.id.PageDown2:
-                PAGE++;
-                if (!(PAGE > ALLPage())) {
-                    Log.e("Page", PAGE + "");
-                    try { 
-                        SaveData(PAGE-1);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    initRecyclerView(PAGE);
-                }else
-                {
-                    PAGE--;
-                    Toast.makeText(ProductionPlanChange.this,"没有下一页",Toast.LENGTH_SHORT).show();
-                    Log.e("Page", PAGE + "");
-                }
-                break;
-
-            case R.id.PageUp2:
-                PAGE--;
-                if (!(PAGE <= 0)) {
-                    Log.e("Page", PAGE + "");
-                    try {
-                        SaveData(PAGE+1);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    initRecyclerView(PAGE);
-                }else
-                {
-                    PAGE++;
-                    Toast.makeText(ProductionPlanChange.this,"没有上一页",Toast.LENGTH_SHORT).show();
-                    Log.e("Page", PAGE + "");
-                }
-                break;
+//            case R.id.PageDown2:
+//                PAGE++;
+//                if (!(PAGE > ALLPage())) {
+//                    Log.e("Page", PAGE + "");
+//                    try {
+//                        SaveData(PAGE-1);
+//                    } catch (ParseException e) {
+//                        e.printStackTrace();
+//                    }
+//                    initRecyclerView(PAGE);
+//                }else
+//                {
+//                    PAGE--;
+//                    Toast.makeText(ProductionPlanChange.this,"没有下一页",Toast.LENGTH_SHORT).show();
+//                    Log.e("Page", PAGE + "");
+//                }
+//                break;
+//
+//            case R.id.PageUp2:
+//                PAGE--;
+//                if (!(PAGE <= 0)) {
+//                    Log.e("Page", PAGE + "");
+//                    try {
+//                        SaveData(PAGE+1);
+//                    } catch (ParseException e) {
+//                        e.printStackTrace();
+//                    }
+//                    initRecyclerView(PAGE);
+//                }else
+//                {
+//                    PAGE++;
+//                    Toast.makeText(ProductionPlanChange.this,"没有上一页",Toast.LENGTH_SHORT).show();
+//                    Log.e("Page", PAGE + "");
+//                }
+//                break;
         }
     }
 
@@ -188,22 +188,22 @@ public class ProductionPlanChange extends AppCompatActivity implements View.OnCl
         tvTitleTable.setText(content);
         ivBack.setOnClickListener(this);
         Up.setOnClickListener(this);
-        PageDown2.setOnClickListener(this);
-        PageUp2.setOnClickListener(this);
+//        PageDown2.setOnClickListener(this);
+//        PageUp2.setOnClickListener(this);
         initRecyclerView(PAGE);
     }
 
     private void initRecyclerView(int NowPage) {
         List<TaskData> taskDatas = new ArrayList<>();
         int MaxPage = NowPage * 5 > AllStaticBean.TaskData.length ? AllStaticBean.TaskData.length : NowPage * 5;
-        for (int i = (NowPage - 1) * 5; i < MaxPage ; i++) {
-            taskDatas.add(AllStaticBean.TaskData[i]);
-        }
+//        for (int i = (NowPage - 1) * 5; i < MaxPage ; i++) {
+//            taskDatas.add(AllStaticBean.TaskData[i]);
+//        }
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ProductionPlanChange.this);
-        adapter = new ProductionPlanChangeAdapter(taskDatas);
+        adapter = new ProductionPlanChangeAdapter(AllStaticBean.TaskData,ProductionPlanChange.this);
         ProducerPlanWeeksChange.setLayoutManager(linearLayoutManager);
         ProducerPlanWeeksChange.setAdapter(adapter);
-        PPPage2.setText(GetNowPage(PAGE));
+//        PPPage2.setText(GetNowPage(PAGE));
     }
 
     private String GetNowPage(int NowPage) {

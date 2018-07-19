@@ -208,16 +208,16 @@ public class ProductionPlanCheckOrAudit extends AppCompatActivity implements Vie
 
         List<TaskData> taskDatas = new ArrayList<>();
 //        do {
-            int MaxPage = (NowPage * 5 > AllStaticBean.TaskData.length)?AllStaticBean.TaskData.length:NowPage * 5;
-                for (int i = (NowPage - 1) * 5; i < MaxPage; i++) {
-                    taskDatas.add(AllStaticBean.TaskData[i]);
-                }
-                Log.e("taskDatasList", "Size is :" + taskDatas.size() + "   " + MaxPage + "  " + NowPage);
+//            int MaxPage = (NowPage * 5 > AllStaticBean.TaskData.length)?AllStaticBean.TaskData.length:NowPage * 5;
+//                for (int i = (NowPage - 1) * 5; i < MaxPage; i++) {
+//                    taskDatas.add(AllStaticBean.TaskData[i]);
+//                }
+//                Log.e("taskDatasList", "Size is :" + taskDatas.size() + "   " + MaxPage + "  " + NowPage);
 //            NowPage++;
 //        } while (Math.abs(NowPage * 5 - AllStaticBean.TaskData.length)<=5 );
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ProductionPlanCheckOrAudit.this);
-        adapter = new ProductionPlanCOAAdapter(taskDatas);
+        adapter = new ProductionPlanCOAAdapter(AllStaticBean.TaskData);
         ProducerPlanWeeks.setLayoutManager(linearLayoutManager);
         ProducerPlanWeeks.setAdapter(adapter);
         PPPage1.setText(GetNowPage(PAGE));

@@ -84,4 +84,16 @@ public class AllStaticBean {
         List<T> dest = (List<T>) in.readObject();
         return dest;
     }
+
+    public static void RemoveArray(int positon) {
+        TaskData[] temp = new TaskData[TaskData.length - 1];
+        for (int i = 0; i < TaskData.length; i++) {
+            if (i != positon) {
+                temp[i] = TaskData[i];
+            }else{
+                i++;
+            }
+        }
+        TaskData = temp;
+    }
 }

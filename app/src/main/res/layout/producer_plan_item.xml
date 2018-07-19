@@ -2,8 +2,8 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:layout_margin="10dp"
+    android:layout_height="160dp"
+    android:layout_margin="5dp"
     app:cardElevation="10dp"
     app:cardCornerRadius="15dp"
     >
@@ -47,7 +47,167 @@
             app:layout_constraintLeft_toRightOf="@id/date"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/check"
+            android:text="审核状态："
+            android:textColor="@color/colorbackg2"
+            app:layout_constraintLeft_toLeftOf="@id/guide65"
+            app:layout_constraintTop_toTopOf="@id/date"
+            />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkState"
+            android:text="已通过"
+            android:textColor="@color/textview"
+            app:layout_constraintLeft_toRightOf="@id/check"
+            app:layout_constraintTop_toTopOf="@id/date"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/name"
+            android:textColor="@color/colorbackg2"
+            android:text="桥名："
+            app:layout_constraintTop_toBottomOf="@id/date"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameText"
+            android:text="二郎岔纵向桥"
+            app:layout_constraintTop_toTopOf="@id/name"
+            app:layout_constraintLeft_toRightOf="@id/name"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/number"
+            android:textColor="@color/colorbackg2"
+            android:text="桥编号："
+            app:layout_constraintTop_toBottomOf="@id/date"
+            app:layout_constraintLeft_toLeftOf="@id/guide5"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/numText"
+            android:text="左幅3-4"
+            app:layout_constraintTop_toTopOf="@id/name"
+            app:layout_constraintLeft_toRightOf="@id/number"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/build"
+            android:textColor="@color/colorbackg2"
+            android:text="制梁顺序："
+            app:layout_constraintTop_toBottomOf="@id/name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buildText"
+            android:text="5"
+            app:layout_constraintTop_toTopOf="@id/build"
+            app:layout_constraintLeft_toRightOf="@id/build"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/buildNumber"
+            android:textColor="@color/colorbackg2"
+            android:text="制梁台号："
+            app:layout_constraintTop_toBottomOf="@id/numText"
+            app:layout_constraintLeft_toLeftOf="@id/guide5"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buildNumberText"
+            android:text="6"
+            app:layout_constraintTop_toTopOf="@id/buildNumber"
+            app:layout_constraintLeft_toRightOf="@id/buildNumber"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/save"
+            android:textColor="@color/colorbackg2"
+            android:text="存梁台号："
+            app:layout_constraintTop_toBottomOf="@id/build"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/saveText"
+            android:text="5"
+            app:layout_constraintTop_toTopOf="@id/save"
+            app:layout_constraintLeft_toRightOf="@id/save"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/saveLocation"
+            android:textColor="@color/colorbackg2"
+            android:text="存梁位置："
+            app:layout_constraintTop_toBottomOf="@id/buildNumberText"
+            app:layout_constraintLeft_toLeftOf="@id/guide5"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/saveLocationText"
+            android:text="6上"
+            app:layout_constraintTop_toTopOf="@id/saveLocation"
+            app:layout_constraintLeft_toRightOf="@id/saveLocation"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/change"
+            android:text="修改"
+            android:textColor="@color/uncheck"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/delete"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/delete"
+            android:text="删除"
+            android:textColor="@color/uncheck"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="@id/change"
+            app:layout_constraintLeft_toRightOf="@id/change"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>

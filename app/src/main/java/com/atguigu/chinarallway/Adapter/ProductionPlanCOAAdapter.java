@@ -21,10 +21,14 @@ import java.util.List;
 
 public class ProductionPlanCOAAdapter extends RecyclerView.Adapter<ProductionPlanCOAAdapter.ViewHolder> {
 
-    private List<TaskData> TaskDatas = new ArrayList<>();
+//    private List<TaskData> TaskDatas = new ArrayList<>();
+    private TaskData[] TaskDatas ;
     private List<ViewHolder> viewHolder = new ArrayList<>();
 
-    public ProductionPlanCOAAdapter(List<TaskData> taskDatas) {
+//    public ProductionPlanCOAAdapter(List<TaskData> taskDatas) {
+//        this.TaskDatas = taskDatas;
+//    }
+    public ProductionPlanCOAAdapter(TaskData[] taskDatas) {
         this.TaskDatas = taskDatas;
     }
 
@@ -41,14 +45,23 @@ public class ProductionPlanCOAAdapter extends RecyclerView.Adapter<ProductionPla
 
         ViewHolder(View itemView) {
             super(itemView);
-            producerTaskDate =(TextView) itemView.findViewById(R.id.producerTaskDate);
-            producerBName =(TextView) itemView.findViewById(R.id.producerBName);
-            producerBId =(TextView) itemView.findViewById(R.id.producerBId);
-            producerMakeOrder =(TextView) itemView.findViewById(R.id.producerMake_Order);
-            producerMakePosID =(TextView) itemView.findViewById(R.id.producerMake_PosID);
-            producerPedID =(TextView) itemView.findViewById(R.id.producerPedID);
-            producerPOS =(TextView) itemView.findViewById(R.id.producerPOS);
-            producerPemit =(TextView) itemView.findViewById(R.id.producerPemit);
+//            producerTaskDate =(TextView) itemView.findViewById(R.id.producerTaskDate);
+//            producerBName =(TextView) itemView.findViewById(R.id.producerBName);
+//            producerBId =(TextView) itemView.findViewById(R.id.producerBId);
+//            producerMakeOrder =(TextView) itemView.findViewById(R.id.producerMake_Order);
+//            producerMakePosID =(TextView) itemView.findViewById(R.id.producerMake_PosID);
+//            producerPedID =(TextView) itemView.findViewById(R.id.producerPedID);
+//            producerPOS =(TextView) itemView.findViewById(R.id.producerPOS);
+//            producerPemit =(TextView) itemView.findViewById(R.id.producerPemit);
+
+            producerTaskDate =(TextView) itemView.findViewById(R.id.dateText);
+            producerBName =(TextView) itemView.findViewById(R.id.nameText);
+            producerBId =(TextView) itemView.findViewById(R.id.numText);
+            producerMakeOrder =(TextView) itemView.findViewById(R.id.buildText);
+            producerMakePosID =(TextView) itemView.findViewById(R.id.buildNumberText);
+            producerPedID =(TextView) itemView.findViewById(R.id.saveText);
+            producerPOS =(TextView) itemView.findViewById(R.id.saveLocationText);
+            producerPemit =(TextView) itemView.findViewById(R.id.checkState);
         }
     }
 
@@ -63,7 +76,8 @@ public class ProductionPlanCOAAdapter extends RecyclerView.Adapter<ProductionPla
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        TaskData data = TaskDatas.get(position);
+//        TaskData data = TaskDatas.get(position);
+        TaskData data = TaskDatas[position];
         holder.producerTaskDate.setText(AllStaticBean.formatter.format(data.getTaskDate()));
         holder.producerBName.setText(data.getbName());
         holder.producerBId.setText(data.getbID());
@@ -81,7 +95,8 @@ public class ProductionPlanCOAAdapter extends RecyclerView.Adapter<ProductionPla
     public int getItemCount() {
 
 //        return AllStaticBean.TaskData.length;
-        return TaskDatas.size();
+//        return TaskDatas.size();
+        return TaskDatas.length;
     }
 
     public TaskData GetTaskData(int position) throws ParseException {
