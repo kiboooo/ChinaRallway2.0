@@ -1,5 +1,6 @@
 package com.atguigu.chinarallway.Adapter;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.atguigu.chinarallway.Bean.AllStaticBean;
 import com.atguigu.chinarallway.Bean.TaskData;
 import com.atguigu.chinarallway.R;
+import com.atguigu.chinarallway.fragment.ProductionPlanChangeFragment;
 
 import java.sql.Date;
 import java.text.ParseException;
@@ -23,6 +25,7 @@ import java.util.List;
 public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<ProductionPlanChangeAdapter.ViewHolder> {
 
     private Context mContext;
+    private FragmentManager mManager;
     private TaskData[] TaskDatas = null;
 //    private List<TaskData> TaskDatas = new ArrayList<>();
     private List<ViewHolder> viewHolder = new ArrayList<>();
@@ -30,9 +33,10 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
 //    public ProductionPlanChangeAdapter(List<TaskData> taskDatas) {
 //        this.TaskDatas = taskDatas;
 //    }
-    public ProductionPlanChangeAdapter(TaskData[] taskDatas, Context context) {
+    public ProductionPlanChangeAdapter(TaskData[] taskDatas, Context context, FragmentManager manager) {
         this.TaskDatas = taskDatas;
         mContext = context;
+        mManager = manager;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -102,6 +106,9 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
             @Override
             public void onClick(View v) {
                 //直接跳转到修改的Dialog
+                ProductionPlanChangeFragment fragment = new ProductionPlanChangeFragment();
+                fragment.setCancelable(false);
+                fragment.show(mManager,"changerProduction");
             }
         });
         holder.deleteButton.setVisibility(View.VISIBLE);

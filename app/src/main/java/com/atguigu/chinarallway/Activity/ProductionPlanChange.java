@@ -200,7 +200,7 @@ public class ProductionPlanChange extends AppCompatActivity implements View.OnCl
 //            taskDatas.add(AllStaticBean.TaskData[i]);
 //        }
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ProductionPlanChange.this);
-        adapter = new ProductionPlanChangeAdapter(AllStaticBean.TaskData,ProductionPlanChange.this);
+        adapter = new ProductionPlanChangeAdapter(AllStaticBean.TaskData,ProductionPlanChange.this,getFragmentManager());
         ProducerPlanWeeksChange.setLayoutManager(linearLayoutManager);
         ProducerPlanWeeksChange.setAdapter(adapter);
 //        PPPage2.setText(GetNowPage(PAGE));

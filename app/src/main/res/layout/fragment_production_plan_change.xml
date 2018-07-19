@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.Guideline
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/guide5"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/date"
+            android:textColor="@color/colorbackg2"
+            android:textSize="16sp"
+            android:text="开始日期："
+            app:layout_constraintTop_toBottomOf="@id/save"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            android:id="@+id/dateBegin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:mcv_selectionColor="@color/colorAccent"
+            app:mcv_showOtherDates="all"
+            app:mcv_calendarMode="month"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintTop_toTopOf="@id/date"
+            app:layout_constraintLeft_toRightOf="@id/date"
+            app:layout_constraintRight_toRightOf="parent"
+            >
+        </com.prolificinteractive.materialcalendarview.MaterialCalendarView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/date2"
+            android:textColor="@color/colorbackg2"
+            android:textSize="16sp"
+            android:text="结束日期："
+            app:layout_constraintTop_toBottomOf="@id/dateBegin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            android:id="@+id/dateEnd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:mcv_selectionColor="@color/colorAccent"
+            app:mcv_showOtherDates="all"
+            app:mcv_calendarMode="month"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintTop_toTopOf="@id/date2"
+            app:layout_constraintLeft_toRightOf="@id/date2"
+            app:layout_constraintRight_toRightOf="parent"
+            >
+        </com.prolificinteractive.materialcalendarview.MaterialCalendarView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/name"
+            android:textColor="@color/colorbackg2"
+            android:textSize="16sp"
+            android:text="桥名："
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameSpinner"
+            app:layout_constraintTop_toTopOf="@id/name"
+            app:layout_constraintLeft_toRightOf="@id/name"
+            >
+        </Spinner>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/number"
+            android:textColor="@color/colorbackg2"
+            android:text="桥编号："
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/guide5"
+            />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/numberSpinner"
+            app:layout_constraintTop_toTopOf="@id/name"
+            app:layout_constraintLeft_toRightOf="@id/number"
+            >
+
+        </Spinner>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/build"
+            android:textColor="@color/colorbackg2"
+            android:text="制梁顺序："
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buildSpinner"
+            app:layout_constraintTop_toTopOf="@id/build"
+            app:layout_constraintLeft_toRightOf="@id/build"
+            >
+        </Spinner>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/buildNumber"
+            android:textColor="@color/colorbackg2"
+            android:text="制梁台号："
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/number"
+            app:layout_constraintLeft_toLeftOf="@id/guide5"
+            />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buildNumberSpinner"
+            app:layout_constraintTop_toTopOf="@id/buildNumber"
+            app:layout_constraintLeft_toRightOf="@id/buildNumber"
+            >
+        </Spinner>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/save"
+            android:textColor="@color/colorbackg2"
+            android:text="存梁台号："
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/build"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/saveSpinner"
+            app:layout_constraintTop_toTopOf="@id/save"
+            app:layout_constraintLeft_toRightOf="@id/save"
+            >
+        </Spinner>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/saveLocation"
+            android:textColor="@color/colorbackg2"
+            android:text="存梁位置："
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/build"
+            app:layout_constraintLeft_toLeftOf="@id/guide5"
+            />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/saveLocationSpinner"
+            app:layout_constraintTop_toTopOf="@id/saveLocation"
+            app:layout_constraintLeft_toRightOf="@id/saveLocation"
+            >
+        </Spinner>
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
+
