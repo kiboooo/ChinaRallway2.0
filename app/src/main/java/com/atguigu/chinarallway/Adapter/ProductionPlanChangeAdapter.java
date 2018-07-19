@@ -114,8 +114,8 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
                         .setPositiveButton("确认", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                //执行删除，刷新页表数据
-                                AllStaticBean.RemoveArray(position);
+                                //执行删除，刷新页表数据,并删除数据库中的表项
+                                Remove(position);
                                 notifyItemRemoved(position);
                                 notifyDataSetChanged();
                             }
@@ -149,6 +149,18 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
         taskData.setTaskDate(new Date(AllStaticBean.formatter.parse(viewHolder.get(position).
                 etProducerTaskDate.getText().toString()).getTime()));
         return taskData;
+    }
+
+    private void Remove(int positon) {
+        int length = TaskDatas.length;
+        TaskData[] temp = new TaskData[length - 1];
+        for (int i = 0,j = 0; i < length; i++) {
+            if (i != positon) {
+                temp[j++] = TaskDatas[i];
+            }
+        }
+        TaskDatas = temp;
+        AllStaticBean.RemoveArray(positon);
     }
 
 }

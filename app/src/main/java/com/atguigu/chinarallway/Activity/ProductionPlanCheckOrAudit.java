@@ -50,12 +50,12 @@ public class ProductionPlanCheckOrAudit extends AppCompatActivity implements Vie
     Button Audit;
     @Bind(R.id.UNAudit)
     Button UNAudit;
-    @Bind(R.id.PageUp1)
-    Button PageUp1;
-    @Bind(R.id.PPPage1)
-    TextView PPPage1;
-    @Bind(R.id.PageDown1)
-    Button PageDown1;
+//    @Bind(R.id.PageUp1)
+//    Button PageUp1;
+//    @Bind(R.id.PPPage1)
+//    TextView PPPage1;
+//    @Bind(R.id.PageDown1)
+//    Button PageDown1;
 
     private final int AuditPass_SUCCESS = 6000;
     private final int AuditPass_FALL = 6001;
@@ -90,10 +90,9 @@ public class ProductionPlanCheckOrAudit extends AppCompatActivity implements Vie
                 break;
             case R.id.Audit:
                 /*上传已审核的状态*/
-
                 boolean base = true;
                 if (AllStaticBean.TaskData != null) {
-                    if (ALLPage()==PAGE) {
+//                    if (ALLPage()==PAGE) {
                         for (int i = 0; i < AllStaticBean.TaskData.length; i++) {
                             if (!AllStaticBean.TaskData[i].isPermit()) {
                                 base = false;
@@ -106,21 +105,21 @@ public class ProductionPlanCheckOrAudit extends AppCompatActivity implements Vie
                         } else {
                             try {
                                 loadingDialog.show();
-                                SaveData(PAGE);
+//                                SaveData(PAGE);
                                 Log.e("上传已审核的状态", AllStaticBean.GsonToDate.toJson(AllStaticBean.TaskData));
                                 //修改数据库状态,Commite:0 审核
                                 UpDataRequest.ModifyTask(
                                         URLEncoder.encode(AllStaticBean.GsonToDate.toJson(AllStaticBean.TaskData), "UTF-8"),
                                         "0",AuditPass_SUCCESS, AuditPass_FALL, mHandler);
-                            } catch (ParseException | UnsupportedEncodingException e) {
+                            } catch ( UnsupportedEncodingException e) {
                                 e.printStackTrace();
                             }
                         }
                 }else
-                    Toast.makeText(ProductionPlanCheckOrAudit.this,
-                            "温馨提示：下一页还有数据尚未审核，不允许提交未审核数据",
-                            Toast.LENGTH_SHORT).show();
-                } else
+//                    Toast.makeText(ProductionPlanCheckOrAudit.this,
+//                            "温馨提示：下一页还有数据尚未审核，不允许提交未审核数据",
+//                            Toast.LENGTH_SHORT).show();
+//                } else
                     Toast.makeText(ProductionPlanCheckOrAudit.this, "生产计划为空，不允许提交", Toast.LENGTH_SHORT).show();
                 break;
 
@@ -149,42 +148,42 @@ public class ProductionPlanCheckOrAudit extends AppCompatActivity implements Vie
                     Toast.makeText(ProductionPlanCheckOrAudit.this, "生产计划为空，不允许操作", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.PageDown1:
-                PAGE++;
-                Log.e("PageDown1", " " + ALLPage());
-                if (!(PAGE > ALLPage())) {
-                    Log.e("Page", PAGE + "");
-                    try {
-                        SaveData(PAGE-1);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    initRecyclerView(PAGE);
-                }else
-                {
-                    PAGE--;
-                    Toast.makeText(ProductionPlanCheckOrAudit.this,"没有下一页",Toast.LENGTH_SHORT).show();
-                    Log.e("Page", PAGE + "");
-                }
-                break;
-
-            case R.id.PageUp1:
-                PAGE--;
-                if (!(PAGE <= 0)) {
-                    Log.e("Page", PAGE + "");
-                    try {
-                        SaveData(PAGE+1);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    initRecyclerView(PAGE);
-                }else
-                {
-                    PAGE++;
-                    Toast.makeText(ProductionPlanCheckOrAudit.this,"没有上一页",Toast.LENGTH_SHORT).show();
-                    Log.e("Page", PAGE + "");
-                }
-                break;
+//            case R.id.PageDown1:
+//                PAGE++;
+//                Log.e("PageDown1", " " + ALLPage());
+//                if (!(PAGE > ALLPage())) {
+//                    Log.e("Page", PAGE + "");
+//                    try {
+//                        SaveData(PAGE-1);
+//                    } catch (ParseException e) {
+//                        e.printStackTrace();
+//                    }
+//                    initRecyclerView(PAGE);
+//                }else
+//                {
+//                    PAGE--;
+//                    Toast.makeText(ProductionPlanCheckOrAudit.this,"没有下一页",Toast.LENGTH_SHORT).show();
+//                    Log.e("Page", PAGE + "");
+//                }
+//                break;
+//
+//            case R.id.PageUp1:
+//                PAGE--;
+//                if (!(PAGE <= 0)) {
+//                    Log.e("Page", PAGE + "");
+//                    try {
+//                        SaveData(PAGE+1);
+//                    } catch (ParseException e) {
+//                        e.printStackTrace();
+//                    }
+//                    initRecyclerView(PAGE);
+//                }else
+//                {
+//                    PAGE++;
+//                    Toast.makeText(ProductionPlanCheckOrAudit.this,"没有上一页",Toast.LENGTH_SHORT).show();
+//                    Log.e("Page", PAGE + "");
+//                }
+//                break;
         }
     }
 
@@ -198,8 +197,8 @@ public class ProductionPlanCheckOrAudit extends AppCompatActivity implements Vie
         ivBack.setOnClickListener(this);
         Audit.setOnClickListener(this);
         UNAudit.setOnClickListener(this);
-        PageUp1.setOnClickListener(this);
-        PageDown1.setOnClickListener(this);
+//        PageUp1.setOnClickListener(this);
+//        PageDown1.setOnClickListener(this);
         initRecyclerView(PAGE);
     }
 
@@ -220,7 +219,7 @@ public class ProductionPlanCheckOrAudit extends AppCompatActivity implements Vie
         adapter = new ProductionPlanCOAAdapter(AllStaticBean.TaskData);
         ProducerPlanWeeks.setLayoutManager(linearLayoutManager);
         ProducerPlanWeeks.setAdapter(adapter);
-        PPPage1.setText(GetNowPage(PAGE));
+//        PPPage1.setText(GetNowPage(PAGE));
     }
 
     private String GetNowPage(int NowPage) {

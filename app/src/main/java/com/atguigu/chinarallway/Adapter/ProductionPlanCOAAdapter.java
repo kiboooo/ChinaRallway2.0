@@ -68,7 +68,8 @@ public class ProductionPlanCOAAdapter extends RecyclerView.Adapter<ProductionPla
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View mV = LayoutInflater.from(parent.getContext()).inflate(R.layout.weekly_production_plan_item, parent, false);
+        View mV = LayoutInflater.from(parent.getContext()).inflate(R.layout.producer_plan_item, parent, false);
+//        View mV = LayoutInflater.from(parent.getContext()).inflate(R.layout.weekly_production_plan_item, parent, false);
         ViewHolder vH = new ViewHolder(mV);
         viewHolder.add(vH);
         return vH;
@@ -86,9 +87,10 @@ public class ProductionPlanCOAAdapter extends RecyclerView.Adapter<ProductionPla
         holder.producerPedID.setText(String.valueOf(data.getPedID()));
         holder.producerPOS.setText(data.getPos());
         if (data.isPermit())
-        holder.producerPemit.setText("审核通过");
+            holder.producerPemit.setText("审核通过");
         else
             holder.producerPemit.setText("未审核");
+        holder.producerPemit.setSelected(data.isPermit());
     }
 
     @Override

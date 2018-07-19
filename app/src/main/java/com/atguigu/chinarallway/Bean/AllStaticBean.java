@@ -1,6 +1,7 @@
 package com.atguigu.chinarallway.Bean;
 
 import android.os.Environment;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -22,6 +23,7 @@ import java.util.Locale;
  */
 
 public class AllStaticBean {
+    private static final String TAG = "AllStaticBean";
 
     public static String mRespenseCookie = null;
     /*测试服务器*/
@@ -86,14 +88,16 @@ public class AllStaticBean {
     }
 
     public static void RemoveArray(int positon) {
-        TaskData[] temp = new TaskData[TaskData.length - 1];
-        for (int i = 0; i < TaskData.length; i++) {
+        int length = TaskData.length;
+        TaskData[] temp = new TaskData[length - 1];
+        for (int i = 0,j = 0; i < length; i++) {
             if (i != positon) {
-                temp[i] = TaskData[i];
-            }else{
-                i++;
+                temp[j++] = TaskData[i];
             }
         }
         TaskData = temp;
+        for (int i = 0; i < TaskData.length; i++) {
+            Log.e(TAG, TaskData[i].bID + "  "+ TaskData[i].bName + "  "+ positon);
+        }
     }
 }
