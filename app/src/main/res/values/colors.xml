@@ -9,5 +9,7 @@
     <color name="exit">#FFB11B</color>
     <color name="background">#4169e1</color>
     <color name="scanner">#A5DEE4</color>
+    <color name="check">#0dff00</color>
+    <color name="uncheck">#fa0328</color>
 
 </resources>
