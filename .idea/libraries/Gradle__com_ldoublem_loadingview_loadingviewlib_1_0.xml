@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.ldoublem.loadingview:loadingviewlib-1.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/loadingviewlib-1.0.aar/b9eca6bbc9e8b9f58357dba1d22b933f/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/loadingviewlib-1.0.aar/b9eca6bbc9e8b9f58357dba1d22b933f/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ldoublem.loadingview/loadingviewlib/1.0/ae856c9b67ba4639b010b0f17307b537fc537bd/loadingviewlib-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

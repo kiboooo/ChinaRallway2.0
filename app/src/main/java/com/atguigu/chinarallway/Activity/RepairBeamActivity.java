@@ -1,6 +1,7 @@
 package com.atguigu.chinarallway.Activity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -20,7 +21,6 @@ import android.widget.Toast;
 import com.atguigu.chinarallway.Bean.AllStaticBean;
 import com.atguigu.chinarallway.Bean.BeamData;
 import com.atguigu.chinarallway.Bean.ModifyData;
-import com.atguigu.chinarallway.Bean.StoreData;
 import com.atguigu.chinarallway.Bean.StorePositionData;
 import com.atguigu.chinarallway.Dialog.LoadingDialog;
 import com.atguigu.chinarallway.R;
@@ -56,10 +56,10 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
     LinearLayout beamSearch;
     @Bind(R.id.beam_buff)
     TextView beamBuff;
-    @Bind(R.id.beam_enter)
-    Button beamEnter;
-    @Bind(R.id.beam_leave)
-    Button beamLeave;
+    /*  @Bind(R.id.beam_enter)
+      Button beamEnter;
+      @Bind(R.id.beam_leave)
+      Button beamLeave;*/
     @Bind(R.id.beam_search_spinner_LorR)
     Spinner beamSearchSpinnerLorR;
     @Bind(R.id.beam_search_spinner_ID)
@@ -79,7 +79,7 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
 
 
     private String BeamRequestContent = "";
-    private String BeamStateChange="";
+    private String BeamStateChange = "";
     private short PedId;
     private String StorePosition = "";
 
@@ -92,7 +92,7 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
     ArrayAdapter<String> Id_Adapter = null;
     ArrayAdapter<String> LorR_Adapter = null;
     ArrayAdapter<String> State_Adapter = null;
-    ArrayAdapter<Short>  PedId_Adapter = null;
+    ArrayAdapter<Short> PedId_Adapter = null;
     ArrayAdapter<String> Pos_Adapter = null;
 
     private final int BEAM_SUCCESS = 12345;
@@ -104,6 +104,7 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
 
 
     private LoadingDialog loadingDialog;
+    private ProgressDialog mProgressDialog;
 
 
     @SuppressLint("HandlerLeak")
@@ -125,6 +126,7 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
                         }
                     }
                     onBind_BeamName_Spinner();
+                    mProgressDialog.dismiss();
                     break;
                 case BEAM_FALL:
                     Toast.makeText(RepairBeamActivity.this, "梁板拉取失败，请退出重试", Toast.LENGTH_SHORT).show();
@@ -147,9 +149,9 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
                     PosList = new ArrayList<>();
                     //PedIdList.add(Short.valueOf(""));
                     PosList.add("");
-                    for (int i = 1; i < AllStaticBean.storePositionDatas.length + 1 ; i++) {
-                        short pedId = AllStaticBean.storePositionDatas[i-1].getPedID();
-                        String pos = AllStaticBean.storePositionDatas[i-1].getPos();
+                    for (int i = 1; i < AllStaticBean.storePositionDatas.length + 1; i++) {
+                        short pedId = AllStaticBean.storePositionDatas[i - 1].getPedID();
+                        String pos = AllStaticBean.storePositionDatas[i - 1].getPos();
 
                         if (PedIdList.size() == 1 || PedIdList.indexOf(AllStaticBean.storePositionDatas[i - 1].getPedID()) < 0) {
                             PedIdList.add(pedId);
@@ -174,12 +176,13 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beam_repair);
         ButterKnife.bind(this);
+        initProgressDialog();
         initSpinner();
         getStorePosition();
         ivBack.setOnClickListener(this);
         tvTitleTable.setText("维护梁板状态");
-        beamEnter.setOnClickListener(this);
-        beamLeave.setOnClickListener(this);
+          /*  beamEnter.setOnClickListener(this);
+            beamLeave.setOnClickListener(this);*/
         btnBeamSearch.setOnClickListener(this);
         btnStateSubmit.setOnClickListener(this);
         btnStoreSubmit.setOnClickListener(this);
@@ -200,11 +203,19 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
         );
     }
 
-    private void getStorePosition(){
-        ManagerRequst.AllRequest("storePosition","","","1",
+    private void getStorePosition() {
+        ManagerRequst.AllRequest("storePosition", "", "", "1",
                 max_handler,
                 STORE_POSITION_SUCCESS,
                 STORE_POSITION_FALL);
+    }
+
+    public void initProgressDialog(){
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setTitle("请稍后");
+        mProgressDialog.setMessage("数据加载中...");
+        //   	mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mProgressDialog.show();
     }
 
     @Override
@@ -221,10 +232,9 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
                     SetBeamContent();
                 }
                 break;
-
-            case R.id.beam_enter:
-                if (Buff.equals("制作中")) {
-                    /*提交梁板入库状态*/
+            case R.id.state_submit:
+                Log.e("BeamStateChange",BeamStateChange);
+                if (BeamStateChange.equals("已入库")) {
                     loadingDialog.show();
                     BeamData beamData = SearchNeedBeam();
                     if (beamData != null) {
@@ -233,15 +243,7 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
                                 changeBeamStatus_SUCCESS, changeBeamStatus_FALL,
                                 max_handler);
                     }
-                } else {
-                    Toast.makeText(RepairBeamActivity.this,
-                            "当前梁板状态不允许进行此操作！", Toast.LENGTH_SHORT).show();
-                }
-                break;
-
-            case R.id.beam_leave:
-                if (Buff.equals("已入场")) {
-                    /*提交梁板出库状态*/
+                } else if (BeamStateChange.equals("已出库")) {
                     loadingDialog.show();
                     BeamData beamData = SearchNeedBeam();
                     if (beamData != null) {
@@ -251,54 +253,49 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
                                 max_handler);
                     }
                 } else {
-                    Toast.makeText(RepairBeamActivity.this,
-                            "当前梁板状态不允许进行此操作！", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            case R.id.state_submit:
-                BeamData beamData = SearchNeedBeam();
-                if (beamData != null){
+                    BeamData beamData = SearchNeedBeam();
+                    if (beamData != null) {
                     /*UpDataRequest.ChangeBeamStatusRequest(BeamStateChange,beamData.getbID(),beamData.getbName(),
                             changeBeamStatus_SUCCESS,changeBeamStatus_FALL,max_handler);*/
-                    try {
-                        ModifyData[] pk = new ModifyData[]{
-                                new ModifyData("bName", URLEncoder.encode(beamData.getbName(), "UTF-8")),
-                                new ModifyData("bID", URLEncoder.encode(beamData.getbID(), "UTF-8"))
-                        };
+                        try {
+                            ModifyData[] pk = new ModifyData[]{
+                                    new ModifyData("bName", URLEncoder.encode(beamData.getbName(), "UTF-8")),
+                                    new ModifyData("bID", URLEncoder.encode(beamData.getbID(), "UTF-8"))
+                            };
 
-                        ModifyData[]  modifyData = new ModifyData[]{
-                                new ModifyData("status",URLEncoder.encode(BeamStateChange,"UTF-8"))
-                        };
+                            ModifyData[] modifyData = new ModifyData[]{
+                                    new ModifyData("status", URLEncoder.encode(BeamStateChange, "UTF-8"))
+                            };
 
-                        UpDataRequest.ModifyDataRequest("beam",pk,modifyData,changeBeamStatus_SUCCESS,changeBeamStatus_FALL,max_handler);
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
+                            UpDataRequest.ModifyDataRequest("beam", pk, modifyData, changeBeamStatus_SUCCESS, changeBeamStatus_FALL, max_handler);
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        beamBuff.setText(BeamStateChange);
+                    } else {
+                        Toast.makeText(RepairBeamActivity.this,
+                                "当前梁板状态不允许进行此操作！", Toast.LENGTH_SHORT).show();
                     }
-                    beamBuff.setText(BeamStateChange);
-                }else {
-                    Toast.makeText(RepairBeamActivity.this,
-                            "当前梁板状态不允许进行此操作！", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.store_submit:
                 BeamData beamData1 = SearchNeedBeam();
-                if (beamData1 != null){
+                if (beamData1 != null) {
                     try {
                         ModifyData[] pk = new ModifyData[]{
                                 new ModifyData("bName", URLEncoder.encode(beamData1.getbName(), "UTF-8")),
                                 new ModifyData("bID", URLEncoder.encode(beamData1.getbID(), "UTF-8"))
                         };
-
-                        ModifyData[]  modifyData = new ModifyData[]{
-                                new ModifyData("pedID",URLEncoder.encode(PedId+"","UTF-8")),
-                                new ModifyData("pos",URLEncoder.encode(StorePosition,"UTF-8"))
+                        ModifyData[] modifyData = new ModifyData[]{
+                                new ModifyData("pedID", URLEncoder.encode(String.valueOf(PedId), "UTF-8")),
+                                new ModifyData("pos", URLEncoder.encode(StorePosition, "UTF-8"))
                         };
 
-                        UpDataRequest.ModifyDataRequest("store",pk,modifyData,changeBeamStatus_SUCCESS,changeBeamStatus_FALL,max_handler);
+                        UpDataRequest.ModifyDataRequest("store", pk, modifyData, changeBeamStatus_SUCCESS, changeBeamStatus_FALL, max_handler);
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }
-                }else {
+                } else {
                     Toast.makeText(RepairBeamActivity.this,
                             "当前梁板状态不允许进行此操作！", Toast.LENGTH_SHORT).show();
                 }
@@ -340,13 +337,13 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (BeamLorR == null) {
                     BeamLorR = new ArrayList<>();
-                }else {
+                } else {
                     BeamLorR.clear();
                 }
                 BeamLorR.add("");
-                if (BeamID==null){
+                if (BeamID == null) {
                     BeamID = new ArrayList<>();
-                }else {
+                } else {
                     BeamID.clear();
                 }
                 BeamID.add("");
@@ -375,13 +372,13 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
                 BeamLorR.add(temp.getbID().substring(0, 2));
             }
         }
-        LorR_Adapter = new ArrayAdapter<>(this,R.layout.spinner_item,BeamLorR );
+        LorR_Adapter = new ArrayAdapter<>(this, R.layout.spinner_item, BeamLorR);
         beamSearchSpinnerLorR.setAdapter(LorR_Adapter);
         beamSearchSpinnerLorR.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!beamName.equals("") && !BeamLorR.get(position).equals("")) {
-                    onBind_ID_Spinner(beamName,BeamLorR.get(position));
+                    onBind_ID_Spinner(beamName, BeamLorR.get(position));
                 }
             }
 
@@ -397,7 +394,7 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
         BeamID.clear();
         BeamID.add("");
 
-        for (int i = 1; i < AllStaticBean.MaxBeamData.length+1; i++) {
+        for (int i = 1; i < AllStaticBean.MaxBeamData.length + 1; i++) {
             BeamData temp = AllStaticBean.MaxBeamData[i - 1];
             if (temp.getbName().equals(beamName) && temp.getbID().substring(0, 2).equals(lr)) {
                 BeamID.add(temp.getbID().substring(2));
@@ -418,15 +415,15 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
         });
     }
 
-    private void onBind_BeamState_Change_Spinner(){
-        State_Adapter = new ArrayAdapter<>(this,R.layout.spinner_item,beamStateChange);
+    private void onBind_BeamState_Change_Spinner() {
+        State_Adapter = new ArrayAdapter<>(this, R.layout.spinner_item, beamStateChange);
         beamStateSpinner.setAdapter(State_Adapter);
         beamStateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String newState = beamStateChange.get(position);
-                Log.e("beamStateChange",newState);
-                if (!newState.equals("")){
+                Log.e("beamStateChange", newState);
+                if (!newState.equals("")) {
                     BeamStateChange = newState;
                 }
 
@@ -439,14 +436,14 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
         });
     }
 
-    private void onBind_PedID_Spinner(){
-        PedId_Adapter = new ArrayAdapter<>(this,R.layout.spinner_item,PedIdList);
+    private void onBind_PedID_Spinner() {
+        PedId_Adapter = new ArrayAdapter<>(this, R.layout.spinner_item, PedIdList);
         beamStoreBeam.setAdapter(PedId_Adapter);
         beamStoreBeam.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 short newPesId = PedIdList.get(position);
-                if (newPesId != 0){
+                if (newPesId != 0) {
                     PedId = newPesId;
                 }
             }
@@ -458,14 +455,14 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
         });
     }
 
-    private void onBind_Pos_Spinner(){
-        Pos_Adapter = new ArrayAdapter<>(this,R.layout.spinner_item,PosList);
+    private void onBind_Pos_Spinner() {
+        Pos_Adapter = new ArrayAdapter<>(this, R.layout.spinner_item, PosList);
         beamStoreBeamPosition.setAdapter(Pos_Adapter);
         beamStoreBeamPosition.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String newPosition = PosList.get(position);
-                if (!newPosition.equals("")){
+                if (!newPosition.equals("")) {
                     StorePosition = newPosition;
                 }
             }
