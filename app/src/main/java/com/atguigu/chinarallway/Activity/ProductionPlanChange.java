@@ -21,7 +21,6 @@ import android.widget.Toast;
 import com.atguigu.chinarallway.Adapter.ProductionPlanChangeAdapter;
 import com.atguigu.chinarallway.Bean.AllStaticBean;
 import com.atguigu.chinarallway.Bean.GetWeekStartAndEnd;
-import com.atguigu.chinarallway.Bean.TaskData;
 import com.atguigu.chinarallway.Dialog.LoadingDialog;
 import com.atguigu.chinarallway.R;
 import com.atguigu.chinarallway.RequstServer.ManagerRequst;
@@ -30,8 +29,6 @@ import com.atguigu.chinarallway.RequstServer.UpDataRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -194,8 +191,8 @@ public class ProductionPlanChange extends AppCompatActivity implements View.OnCl
     }
 
     private void initRecyclerView(int NowPage) {
-        List<TaskData> taskDatas = new ArrayList<>();
-        int MaxPage = NowPage * 5 > AllStaticBean.TaskData.length ? AllStaticBean.TaskData.length : NowPage * 5;
+//        List<TaskData> taskDatas = new ArrayList<>();
+//        int MaxPage = NowPage * 5 > AllStaticBean.TaskData.length ? AllStaticBean.TaskData.length : NowPage * 5;
 //        for (int i = (NowPage - 1) * 5; i < MaxPage ; i++) {
 //            taskDatas.add(AllStaticBean.TaskData[i]);
 //        }

@@ -9,6 +9,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tipText"
+            android:textSize="16sp"
+            android:text="温馨提示：不支持更改桥名和桥编号。若需要更改，请删除本条生产计划，重新添加架梁计划。"
+            android:textColor="@color/exit"
+            android:paddingTop="5dp"
+            android:layout_margin="10dp"
+            />
+
         <android.support.constraint.Guideline
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -77,18 +88,28 @@
             android:textColor="@color/colorbackg2"
             android:textSize="16sp"
             android:text="桥名："
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tipText"
             app:layout_constraintLeft_toLeftOf="parent"
             />
 
-        <Spinner
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/nameSpinner"
+            android:id="@+id/nameText"
+            android:text="黄扁沟中桥"
+            android:textSize="16sp"
             app:layout_constraintTop_toTopOf="@id/name"
             app:layout_constraintLeft_toRightOf="@id/name"
-            >
-        </Spinner>
+            />
+
+        <!--<Spinner-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/nameSpinner"-->
+            <!--app:layout_constraintTop_toTopOf="@id/name"-->
+            <!--app:layout_constraintLeft_toRightOf="@id/name"-->
+            <!--&gt;-->
+        <!--</Spinner>-->
 
         <TextView
             android:layout_width="wrap_content"
@@ -98,19 +119,29 @@
             android:textColor="@color/colorbackg2"
             android:text="桥编号："
             android:textSize="16sp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tipText"
             app:layout_constraintLeft_toLeftOf="@id/guide5"
             />
 
-        <Spinner
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/numberSpinner"
+            android:id="@+id/numberText"
+            android:textSize="16sp"
+            android:text="左幅3-4"
             app:layout_constraintTop_toTopOf="@id/name"
             app:layout_constraintLeft_toRightOf="@id/number"
-            >
+            />
 
-        </Spinner>
+        <!--<Spinner-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/numberSpinner"-->
+            <!--app:layout_constraintTop_toTopOf="@id/name"-->
+            <!--app:layout_constraintLeft_toRightOf="@id/number"-->
+            <!--&gt;-->
+
+        <!--</Spinner>-->
 
         <TextView
             android:layout_width="wrap_content"

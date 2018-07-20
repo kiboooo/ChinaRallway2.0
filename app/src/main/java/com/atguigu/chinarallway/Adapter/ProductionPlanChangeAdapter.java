@@ -3,6 +3,7 @@ package com.atguigu.chinarallway.Adapter;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -90,7 +91,7 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        TaskData data = TaskDatas[position];
+        final TaskData data = TaskDatas[position];
 //        TaskData data = TaskDatas.get(position);
         holder.etProducerTaskDate.setText(AllStaticBean.formatter.format(data.getTaskDate()));
         holder.etProducerBName.setText(data.getbName());
@@ -107,6 +108,7 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
             public void onClick(View v) {
                 //直接跳转到修改的Dialog
                 ProductionPlanChangeFragment fragment = new ProductionPlanChangeFragment();
+                fragment.setArguments(getTaskData(data));
                 fragment.setCancelable(false);
                 fragment.show(mManager,"changerProduction");
             }
@@ -168,6 +170,19 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
         }
         TaskDatas = temp;
         AllStaticBean.RemoveArray(positon);
+    }
+
+    private Bundle getTaskData(TaskData data) {
+        Bundle bundle = new Bundle();
+        if (data != null) {
+            bundle.putString("bName", data.getbName());
+            bundle.putString("bId", data.getbID());
+            bundle.putString("mOrder", data.getMakeOrder());
+            bundle.putString("mPosId", data.getMakePosId());
+            bundle.putString("mPos", data.getPos());
+            bundle.putString("mPedId", String.valueOf(data.getPedID()));
+        }
+        return bundle;
     }
 
 }
