@@ -55,7 +55,6 @@ public class DeleteRequset {
                     if (mResponse.isSuccessful()) {
                         String content = mResponse.body().string();
                         JSONObject jsonObject = new JSONObject(content);
-
                         Log.e("DeleteRequset  ", content);
                         if ( jsonObject.getInt("code") > 0) {
                             Message message = new Message();
