@@ -37,8 +37,8 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
     private List<ViewHolder> viewHolder = new ArrayList<>();
     private ProgressDialog progressDialog;
 
-    private final int DeleteSUCCESS = 4006;
-    private final int DeleteFALL = 4007;
+    private final int DeleteSUCCESS = 4446;
+    private final int DeleteFALL = 4447;
 
 //    private List<TaskData> TaskDatas = new ArrayList<>();
 //    public ProductionPlanChangeAdapter(List<TaskData> taskDatas) {
@@ -122,8 +122,9 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         final TaskData data = TaskDatas[position];
+        final int positionLocal = position;
 //        TaskData data = TaskDatas.get(position);
         holder.etProducerTaskDate.setText(AllStaticBean.formatter.format(data.getTaskDate()));
         holder.etProducerBName.setText(data.getbName());
@@ -159,7 +160,7 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
                                 //执行删除，刷新页表数据,并删除数据库中的表项
                                 progressDialog.show();
                                 DeleteRequset.DeleteProductionPlan(data,
-                                        DeleteSUCCESS, DeleteFALL, mHandler, position);
+                                        DeleteSUCCESS, DeleteFALL, mHandler,positionLocal);
                             }
                         })
                         .setNegativeButton("取消", new DialogInterface.OnClickListener() {
