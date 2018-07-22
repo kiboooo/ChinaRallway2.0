@@ -26,7 +26,6 @@ public class DeleteRequset {
             @Override
             public void run() {
                 try {
-
                     String RequsetData =
                             AllStaticBean.GsonToDate.toJson(data);
 

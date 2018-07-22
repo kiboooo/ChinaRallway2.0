@@ -134,7 +134,6 @@ public class ManagerRequst {
                         Log.e("ALlRequast", body);
                         JSONObject jsonObject = new JSONObject(body);
                         if (jsonObject.getInt("code") > 0) {
-
                             JSONArray jsonArray = jsonObject.getJSONArray("data");
                             Message message = new Message();
                             message.what = MessageSuccessWhat;

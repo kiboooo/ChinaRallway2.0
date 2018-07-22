@@ -18,10 +18,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atguigu.chinarallway.Bean.AllStaticBean;
+import com.atguigu.chinarallway.Bean.MakePosition;
+import com.atguigu.chinarallway.Bean.StorePositionData;
 import com.atguigu.chinarallway.Bean.TaskData;
 import com.atguigu.chinarallway.R;
 import com.atguigu.chinarallway.RequstServer.DeleteRequset;
+import com.atguigu.chinarallway.RequstServer.ManagerRequst;
 import com.atguigu.chinarallway.fragment.ProductionPlanChangeFragment;
+
+import org.json.JSONArray;
 
 import java.sql.Date;
 import java.text.ParseException;
@@ -36,9 +41,14 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
     private TaskData[] TaskDatas = null;
     private List<ViewHolder> viewHolder = new ArrayList<>();
     private ProgressDialog progressDialog;
+    private ProductionPlanChangeFragment fragment;
 
     private final int DeleteSUCCESS = 4446;
     private final int DeleteFALL = 4447;
+    private final int MPSUCCESS = 1078;
+    private final int MPFALL = 2078;
+    private final int SPSUCCESS = 3078;
+    private final int SPFALL = 4078;
 
 //    private List<TaskData> TaskDatas = new ArrayList<>();
 //    public ProductionPlanChangeAdapter(List<TaskData> taskDatas) {
@@ -65,6 +75,32 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
                     String message = (String )msg.obj;
                     Toast.makeText(mContext, "删除失败，失败原因:"+message,
                             Toast.LENGTH_SHORT).show();
+                    break;
+                case MPSUCCESS:
+                    JSONArray jsonArray1 = (JSONArray) msg.obj;
+                    AllStaticBean.makePositions = AllStaticBean.
+                            GsonToDate.fromJson(jsonArray1.toString(),MakePosition[].class);
+                    ManagerRequst.AllRequest(
+                            "storePosition","","","1",
+                            mHandler,
+                            SPSUCCESS,
+                            SPFALL
+                    );
+                    break;
+                case MPFALL:
+                    progressDialog.hide();
+                    Toast.makeText(mContext, "请求出错", Toast.LENGTH_SHORT).show();
+                    break;
+                case SPSUCCESS:
+                    JSONArray jsonArray2 = (JSONArray) msg.obj;
+                    AllStaticBean.storePositionDatas = AllStaticBean.
+                            GsonToDate.fromJson(jsonArray2.toString(),StorePositionData[].class);
+                    progressDialog.hide();
+                    fragment.show(mManager,"changerProduction");
+                    break;
+                case SPFALL:
+                    progressDialog.hide();
+                    Toast.makeText(mContext, "请求出错", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -93,7 +129,6 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
 //            etProducerPedID =  itemView.findViewById(R.id.etProducerPedID);
 //            etProducerPOS = itemView.findViewById(R.id.etProducerPOS);
 //            etProducerPemit = (TextView) itemView.findViewById(R.id.etProducerPemit);
-
             etProducerTaskDate = (TextView) itemView.findViewById(R.id.dateText);
             etProducerBName = (TextView) itemView.findViewById(R.id.nameText);
             etProducerBId = (TextView) itemView.findViewById(R.id.numText);
@@ -140,11 +175,15 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
             @Override
             public void onClick(View v) {
                 //直接跳转到修改的Dialog
-                ProductionPlanChangeFragment fragment = new ProductionPlanChangeFragment();
+                progressDialog.show();
+                fragment = new ProductionPlanChangeFragment();
                 fragment.setArguments(getTaskData(data));
                 fragment.setCancelable(false);
-                fragment.show(mManager,"changerProduction");
-
+                ManagerRequst.AllRequest(
+                        "makePosition", "", "", "1",
+                        mHandler,
+                        MPSUCCESS,
+                        MPFALL);
             }
         });
         holder.deleteButton.setVisibility(View.VISIBLE);

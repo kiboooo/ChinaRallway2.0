@@ -11,12 +11,13 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.atguigu.chinarallway.Bean.AllStaticBean;
+import com.atguigu.chinarallway.Bean.MakePosition;
+import com.atguigu.chinarallway.Bean.StorePositionData;
 import com.atguigu.chinarallway.R;
-import com.atguigu.chinarallway.RequstServer.ManagerRequst;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import java.util.List;
 
 public class ProductionPlanChangeFragment extends DialogFragment {
 
-//    private Spinner bridgeName;
+    //    private Spinner bridgeName;
 //    private Spinner bridgeNumber;
     private TextView bridgeName;
     private TextView bridgeNumber;
@@ -35,42 +36,18 @@ public class ProductionPlanChangeFragment extends DialogFragment {
     private MaterialCalendarView start;
     private MaterialCalendarView end;
 
-    private ProgressBar progressBar;
-
-    private final int MPSUCCESS = 1078;
-    private final int MPFALL = 2078;
-    private final int SPSUCCESS = 3078;
-    private final int SPFALL = 4078;
-
-    private List<Integer> number = new ArrayList<>();
+    private List<Integer> order = new ArrayList<>();
+    private List<String> MPnumber = new ArrayList<>();
+    private List<String> saveIDList = new ArrayList<>();
+    private List<String> saveLocationList = new ArrayList<>();
 
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what) {
-                case MPSUCCESS:
-                    ManagerRequst.AllRequest(
-                            "storePosition","","","1",
-                            mHandler,
-                            SPSUCCESS,
-                            SPFALL
-                    );
-                    break;
-                case MPFALL:
-
-                    break;
-                case SPSUCCESS:
-                    ProgressHide();
-                    break;
-                case SPFALL:
-                    ProgressHide();
-                    break;
-            }
         }
     };
-
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -78,17 +55,24 @@ public class ProductionPlanChangeFragment extends DialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.fragment_production_plan_change, null);
         Bundle bundle = getArguments();
-
         bridgeName = view.findViewById(R.id.nameText);
         bridgeName.setText(bundle.getString("bName"));
         bridgeNumber = view.findViewById(R.id.numberText);
         bridgeNumber.setText(bundle.getString("bId"));
         builde = view.findViewById(R.id.buildSpinner);
+        initMakePositionOrder(Integer.valueOf(bundle.getString("mOrder")));
+        builde.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.spinner_item_production, order));
         buildeLocation = view.findViewById(R.id.buildNumberSpinner);
-        initNumberList(Integer.valueOf(bundle.getString("mOrder")));
-        buildeLocation.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.spinner_item_production, number));
+        initMakePositionNum(bundle.getString("mPosId"));
+        buildeLocation.setAdapter(new ArrayAdapter<>(getActivity(),
+                R.layout.spinner_item_production, MPnumber));
         saveNumber = view.findViewById(R.id.saveSpinner);
         saveLocation = view.findViewById(R.id.saveLocationSpinner);
+        initSave(bundle.getString("mPedId"), bundle.getString("mPos"));
+        saveNumber.setAdapter(new ArrayAdapter<>(getActivity(),
+                R.layout.spinner_item_production, saveIDList));
+        saveLocation.setAdapter(new ArrayAdapter<>(getActivity(),
+                R.layout.spinner_item_production, saveLocationList));
         start = view.findViewById(R.id.dateBegin);
         end = view.findViewById(R.id.dateEnd);
         builder.setView(view)
@@ -103,26 +87,36 @@ public class ProductionPlanChangeFragment extends DialogFragment {
         return builder.create();
     }
 
-    private void initNumberList(int x){
-        number.add(x);
-        for (int i = 1; i <=100 ; i++) {
-            number.add(i);
+    private void initMakePositionOrder(int x) {
+        order.add(x);
+        for (int i = 1; i <= 100; i++) {
+            order.add(i);
         }
     }
 
-    private void ProgressShow(){
-
+    private void initMakePositionNum(String x) {
+        MPnumber.add(x);
+        for (int i = 0; i < AllStaticBean.makePositions.length; i++) {
+            MakePosition temp = AllStaticBean.makePositions[i];
+            if (temp.isIdle() && !MPnumber.contains(temp.getMakePosID())) {
+                MPnumber.add(temp.getMakePosID());
+            }
+        }
     }
 
-    private void ProgressHide(){
+    private void initSave(String id, String location) {
+        saveIDList.add(id);
+        saveLocationList.add(id + "_" + location);
+        for (int i = 0; i < AllStaticBean.storePositionDatas.length; i++) {
+            StorePositionData temp = AllStaticBean.storePositionDatas[i];
+            if ("空闲".equals(temp.getStatus())) {
+                if (!saveIDList.contains(String.valueOf(temp.getPedID()))) {
+                    saveIDList.add(String.valueOf(temp.getPedID()));
+                }
+                saveLocationList.add(String.valueOf(temp.getPedID())
+                        + "_" + temp.getPos());
 
-    }
-
-    private void initData(){
-        ManagerRequst.AllRequest(
-                "makePosition", "", "", "1",
-                mHandler,
-                MPSUCCESS,
-                MPFALL);
+            }
+        }
     }
 }
