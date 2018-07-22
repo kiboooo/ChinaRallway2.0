@@ -45,8 +45,9 @@ public class ProductionPlanChange extends AppCompatActivity implements View.OnCl
     @Bind(R.id.Up)
     Button Up;
 
+
     private final int ChangeUpdateFinish = 4005;
-    private final int GOAuditSUCCUSS = 4003;
+    private final int GOAuditSUCCESS = 4003;
     private final int ChangeUpdateFALL = 4002;
     private final int GOAuditFALL = 4004;
 //    @Bind(R.id.PageUp2)
@@ -82,7 +83,7 @@ public class ProductionPlanChange extends AppCompatActivity implements View.OnCl
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     loadingDialog.show();
                                     ManagerRequst.ProductiongPlanRequest("Task", "", "", "3", "1",
-                                            mHandler, GOAuditSUCCUSS, GOAuditFALL);
+                                            mHandler, GOAuditSUCCESS, GOAuditFALL);
                                 }
                             })
                             .setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -95,7 +96,7 @@ public class ProductionPlanChange extends AppCompatActivity implements View.OnCl
                     alertDialog.show();
                     break;
 
-                case GOAuditSUCCUSS:
+                case GOAuditSUCCESS:
                     loadingDialog.close();
                     startActivity(new Intent(ProductionPlanChange.this, ProductionPlanCheckOrAudit.class));
                     finish();

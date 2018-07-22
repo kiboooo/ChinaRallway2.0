@@ -51,6 +51,7 @@ public class AllStaticBean {
     public static String FileDownLoadURL = "/download";
     public static String APKDownLoad = "/getAPK";
     public static String changeBeamFind = "/changeBeamFind";
+    public static String removePlan = "/removePlan";
     public static String BeamPlanName = "";
     public static String BeamVideoName = "";
     public static BridgeData[] BridgeName = null;

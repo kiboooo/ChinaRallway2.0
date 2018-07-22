@@ -1,17 +1,22 @@
 package com.atguigu.chinarallway.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.atguigu.chinarallway.R;
+import com.atguigu.chinarallway.RequstServer.ManagerRequst;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import java.util.ArrayList;
@@ -30,7 +35,41 @@ public class ProductionPlanChangeFragment extends DialogFragment {
     private MaterialCalendarView start;
     private MaterialCalendarView end;
 
+    private ProgressBar progressBar;
+
+    private final int MPSUCCESS = 1078;
+    private final int MPFALL = 2078;
+    private final int SPSUCCESS = 3078;
+    private final int SPFALL = 4078;
+
     private List<Integer> number = new ArrayList<>();
+
+    @SuppressLint("HandlerLeak")
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case MPSUCCESS:
+                    ManagerRequst.AllRequest(
+                            "storePosition","","","1",
+                            mHandler,
+                            SPSUCCESS,
+                            SPFALL
+                    );
+                    break;
+                case MPFALL:
+
+                    break;
+                case SPSUCCESS:
+                    ProgressHide();
+                    break;
+                case SPFALL:
+                    ProgressHide();
+                    break;
+            }
+        }
+    };
 
 
     @Override
@@ -69,5 +108,21 @@ public class ProductionPlanChangeFragment extends DialogFragment {
         for (int i = 1; i <=100 ; i++) {
             number.add(i);
         }
+    }
+
+    private void ProgressShow(){
+
+    }
+
+    private void ProgressHide(){
+
+    }
+
+    private void initData(){
+        ManagerRequst.AllRequest(
+                "makePosition", "", "", "1",
+                mHandler,
+                MPSUCCESS,
+                MPFALL);
     }
 }
