@@ -8,8 +8,11 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,8 +20,11 @@ import android.widget.TextView;
 import com.atguigu.chinarallway.Bean.AllStaticBean;
 import com.atguigu.chinarallway.Bean.MakePosition;
 import com.atguigu.chinarallway.Bean.StorePositionData;
+import com.atguigu.chinarallway.Interface.OnTaskDataChangeBack;
 import com.atguigu.chinarallway.R;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,12 +40,24 @@ public class ProductionPlanChangeFragment extends DialogFragment {
     private Spinner saveNumber;
     private Spinner saveLocation;
     private MaterialCalendarView start;
-    private MaterialCalendarView end;
+//    private MaterialCalendarView end;
 
     private List<Integer> order = new ArrayList<>();
     private List<String> MPnumber = new ArrayList<>();
     private List<String> saveIDList = new ArrayList<>();
     private List<String> saveLocationList = new ArrayList<>();
+
+    private int orderNum;
+    private String orderLocation;
+    private String storeNum;
+    private String storeLocation;
+    private CalendarDay newDate;
+
+    private OnTaskDataChangeBack mOnTaskDataChangeBack;
+
+    public void setOnTaskDataChangeBack(OnTaskDataChangeBack onTaskDataChangeBack){
+        mOnTaskDataChangeBack = onTaskDataChangeBack;
+    }
 
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
@@ -74,13 +92,20 @@ public class ProductionPlanChangeFragment extends DialogFragment {
         saveLocation.setAdapter(new ArrayAdapter<>(getActivity(),
                 R.layout.spinner_item_production, saveLocationList));
         start = view.findViewById(R.id.dateBegin);
-        end = view.findViewById(R.id.dateEnd);
+        start.setOnDateChangedListener(new OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+                newDate = date;
+            }
+        });
+//        end = view.findViewById(R.id.dateEnd);
+        onBind_Spinner();
         builder.setView(view)
                 .setPositiveButton("完  成",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int id) {
-
+                                mOnTaskDataChangeBack.changeBackTaskData(orderNum,orderLocation,storeNum,storeLocation,newDate);
                             }
                         })
                 .setNegativeButton("取  消", null);
@@ -118,5 +143,58 @@ public class ProductionPlanChangeFragment extends DialogFragment {
 
             }
         }
+    }
+
+    private void onBind_Spinner(){
+        builde.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                orderNum = order.get(i);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        buildeLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                orderLocation = MPnumber.get(i);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        saveNumber.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                storeNum = saveIDList.get(i);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        saveLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                storeLocation = saveLocationList.get(i);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 }

@@ -18,7 +18,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class DeleteRequset {
+public class DeleteRequest {
     public static void DeleteProductionPlan(
             final TaskData data, final int success, final int fall,
             final Handler mHandler,final int position){
@@ -29,8 +29,8 @@ public class DeleteRequset {
                     String RequsetData =
                             AllStaticBean.GsonToDate.toJson(data);
 
-                    Log.e("DeleteRequset  : ", RequsetData);
-                    Log.e("DeleteRequset  : ",  URLEncoder.encode(
+                    Log.e("DeleteRequest  : ", RequsetData);
+                    Log.e("DeleteRequest  : ",  URLEncoder.encode(
                             RequsetData, "UTF-8"));
 
                     OkHttpClient okHttpClient = new OkHttpClient.Builder()
@@ -54,7 +54,7 @@ public class DeleteRequset {
                     if (mResponse.isSuccessful()) {
                         String content = mResponse.body().string();
                         JSONObject jsonObject = new JSONObject(content);
-                        Log.e("DeleteRequset  ", content);
+                        Log.e("DeleteRequest  ", content);
                         if ( jsonObject.getInt("code") > 0) {
                             Message message = new Message();
                             message.what = success;

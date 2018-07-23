@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +22,12 @@ import com.atguigu.chinarallway.Bean.AllStaticBean;
 import com.atguigu.chinarallway.Bean.MakePosition;
 import com.atguigu.chinarallway.Bean.StorePositionData;
 import com.atguigu.chinarallway.Bean.TaskData;
+import com.atguigu.chinarallway.Interface.OnTaskDataChangeBack;
 import com.atguigu.chinarallway.R;
-import com.atguigu.chinarallway.RequstServer.DeleteRequset;
+import com.atguigu.chinarallway.RequstServer.DeleteRequest;
 import com.atguigu.chinarallway.RequstServer.ManagerRequst;
 import com.atguigu.chinarallway.fragment.ProductionPlanChangeFragment;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import org.json.JSONArray;
 
@@ -34,7 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<ProductionPlanChangeAdapter.ViewHolder> {
+public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<ProductionPlanChangeAdapter.ViewHolder> implements OnTaskDataChangeBack{
 
     private Context mContext;
     private FragmentManager mManager;
@@ -49,6 +52,12 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
     private final int MPFALL = 2078;
     private final int SPSUCCESS = 3078;
     private final int SPFALL = 4078;
+
+    private int newOrderNum;
+    private String newOrderLocation;
+    private String newStoreNum;
+    private String newStoreLocation;
+    private CalendarDay newDate;
 
 //    private List<TaskData> TaskDatas = new ArrayList<>();
 //    public ProductionPlanChangeAdapter(List<TaskData> taskDatas) {
@@ -105,6 +114,12 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
             }
         }
     };
+
+    @Override
+    public void changeBackTaskData(int orderNum, String orderLocation, String storeNum, String storeLocation, CalendarDay date) {
+
+    }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView etProducerTaskDate;
         TextView etProducerBName;
@@ -177,6 +192,15 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
                 //直接跳转到修改的Dialog
                 progressDialog.show();
                 fragment = new ProductionPlanChangeFragment();
+                fragment.setOnTaskDataChangeBack(new OnTaskDataChangeBack() {
+                    @Override
+                    public void changeBackTaskData(int orderNum, String orderLocation, String storeNum, String storeLocation, CalendarDay date) {
+                        data.setMakeOrder(String.valueOf(orderNum));
+                        data.setMakePosId(orderLocation);
+                        data.setPedID(Short.parseShort(storeNum));
+                        data.setPos(storeLocation);
+                    }
+                });
                 fragment.setArguments(getTaskData(data));
                 fragment.setCancelable(false);
                 ManagerRequst.AllRequest(
@@ -198,7 +222,7 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 //执行删除，刷新页表数据,并删除数据库中的表项
                                 progressDialog.show();
-                                DeleteRequset.DeleteProductionPlan(data,
+                                DeleteRequest.DeleteProductionPlan(data,
                                         DeleteSUCCESS, DeleteFALL, mHandler,positionLocal);
                             }
                         })
@@ -252,6 +276,7 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
         if (data != null) {
             bundle.putString("bName", data.getbName());
             bundle.putString("bId", data.getbID());
+            Log.e("mOrder",data.getMakeOrder());
             bundle.putString("mOrder", data.getMakeOrder());
             bundle.putString("mPosId", data.getMakePosId());
             bundle.putString("mPos", data.getPos());

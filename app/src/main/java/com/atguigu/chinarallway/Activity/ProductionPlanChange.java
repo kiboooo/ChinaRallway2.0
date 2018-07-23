@@ -1,13 +1,13 @@
 package com.atguigu.chinarallway.Activity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -201,6 +201,7 @@ public class ProductionPlanChange extends AppCompatActivity implements View.OnCl
         adapter = new ProductionPlanChangeAdapter(AllStaticBean.TaskData,ProductionPlanChange.this,getFragmentManager());
         ProducerPlanWeeksChange.setLayoutManager(linearLayoutManager);
         ProducerPlanWeeksChange.setAdapter(adapter);
+        ProducerPlanWeeksChange.setHasFixedSize(true);
 //        PPPage2.setText(GetNowPage(PAGE));
     }
 
