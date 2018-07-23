@@ -267,7 +267,7 @@ public class LabDataChange extends AppCompatActivity implements View.OnClickList
                         };
 
                         UpDataRequest.ModifyDataRequest("checkRec", pk, modifyData,
-                                MODIFY_SUCCESS, MODIFY_FALL, mHandler
+                                MODIFY_SUCCESS, MODIFY_FALL, mHandler,0
                         );
                     } else
                         mHandler.sendEmptyMessage(MODIFY_FALL);

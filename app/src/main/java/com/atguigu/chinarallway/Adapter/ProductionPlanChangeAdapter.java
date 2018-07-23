@@ -20,24 +20,28 @@ import android.widget.Toast;
 
 import com.atguigu.chinarallway.Bean.AllStaticBean;
 import com.atguigu.chinarallway.Bean.MakePosition;
+import com.atguigu.chinarallway.Bean.ModifyData;
 import com.atguigu.chinarallway.Bean.StorePositionData;
 import com.atguigu.chinarallway.Bean.TaskData;
 import com.atguigu.chinarallway.Interface.OnTaskDataChangeBack;
 import com.atguigu.chinarallway.R;
 import com.atguigu.chinarallway.RequstServer.DeleteRequest;
 import com.atguigu.chinarallway.RequstServer.ManagerRequst;
+import com.atguigu.chinarallway.RequstServer.UpDataRequest;
 import com.atguigu.chinarallway.fragment.ProductionPlanChangeFragment;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import org.json.JSONArray;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.sql.Date;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<ProductionPlanChangeAdapter.ViewHolder> implements OnTaskDataChangeBack{
+public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<ProductionPlanChangeAdapter.ViewHolder> {
 
     private Context mContext;
     private FragmentManager mManager;
@@ -52,12 +56,8 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
     private final int MPFALL = 2078;
     private final int SPSUCCESS = 3078;
     private final int SPFALL = 4078;
-
-    private int newOrderNum;
-    private String newOrderLocation;
-    private String newStoreNum;
-    private String newStoreLocation;
-    private CalendarDay newDate;
+    private final int UpdateSUCCESS = 3378;
+    private final int UpdateFALL = 4478;
 
 //    private List<TaskData> TaskDatas = new ArrayList<>();
 //    public ProductionPlanChangeAdapter(List<TaskData> taskDatas) {
@@ -111,14 +111,19 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
                     progressDialog.hide();
                     Toast.makeText(mContext, "请求出错", Toast.LENGTH_SHORT).show();
                     break;
+                case UpdateSUCCESS:
+                    progressDialog.hide();
+                    int mPosition = msg.arg1;
+                    notifyItemRemoved(mPosition);
+                    notifyDataSetChanged();
+                    break;
+                case UpdateFALL:
+                    progressDialog.hide();
+                    Toast.makeText(mContext, "修改请求出错", Toast.LENGTH_SHORT).show();
+                    break;
             }
         }
     };
-
-    @Override
-    public void changeBackTaskData(int orderNum, String orderLocation, String storeNum, String storeLocation, CalendarDay date) {
-
-    }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView etProducerTaskDate;
@@ -157,8 +162,6 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
         }
     }
 
-
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 //        View mV = LayoutInflater.from(parent.getContext()).inflate(R.layout.weekly_production_change_item, parent, false);
@@ -194,14 +197,43 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
                 fragment = new ProductionPlanChangeFragment();
                 fragment.setOnTaskDataChangeBack(new OnTaskDataChangeBack() {
                     @Override
-                    public void changeBackTaskData(int orderNum, String orderLocation, String storeNum, String storeLocation, CalendarDay date) {
-                        data.setMakeOrder(String.valueOf(orderNum));
-                        data.setMakePosId(orderLocation);
-                        data.setPedID(Short.parseShort(storeNum));
-                        data.setPos(storeLocation);
+                    public void changeBackTaskData(String bName, String bId, int orderNum, String orderLocation, String storeNum, String storeLocation, CalendarDay date,int p) {
+                        TaskData mData = new TaskData();
+                        mData.setbName(bName);
+                        mData.setbID(bId);
+                        mData.setMakeOrder(String.valueOf(orderNum));
+                        mData.setMakePosId(orderLocation);
+                        mData.setPedID(Short.parseShort(storeNum));
+                        mData.setPos(storeLocation);
+                        if (date != null) {
+                            mData.setTaskDate(new Date(date.getDate().getTime()));
+                        } else {
+                            mData.setTaskDate(data.getTaskDate());
+                        }
+                        TaskDatas[p] = mData;
+                        AllStaticBean.TaskData[p] = mData;
+                        progressDialog.show();
+                        try {
+                            ModifyData[] pk = new ModifyData[]{
+                                    new ModifyData("bName", URLEncoder.encode(mData.getbName(), "UTF-8")),
+                                    new ModifyData("bID", URLEncoder.encode(mData.getbID(), "UTF-8"))
+                            };
+                            ModifyData[] modifyData = new ModifyData[]{
+                                    new ModifyData("makeOrder", URLEncoder.encode(mData.getMakeOrder(), "UTF-8")),
+                                    new ModifyData("makePosId", URLEncoder.encode(mData.getMakePosId(), "UTF-8")),
+                                    new ModifyData("pedID", URLEncoder.encode(String.valueOf(mData.getPedID()), "UTF-8")),
+                                    new ModifyData("pos", URLEncoder.encode(mData.getPos(), "UTF-8")),
+                                    new ModifyData("permit", URLEncoder.encode(mData.isPermit()?"0":"1", "UTF-8")),
+                                    new ModifyData("taskDate", URLEncoder.encode(AllStaticBean.formatter.format(mData.getTaskDate().getTime()), "UTF-8"))
+                            };
+
+                            UpDataRequest.ModifyDataRequest("task", pk, modifyData, UpdateSUCCESS, UpdateFALL, mHandler, p);
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
-                fragment.setArguments(getTaskData(data));
+                fragment.setArguments(getTaskData(data,positionLocal));
                 fragment.setCancelable(false);
                 ManagerRequst.AllRequest(
                         "makePosition", "", "", "1",
@@ -271,7 +303,7 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
         notifyDataSetChanged();
     }
 
-    private Bundle getTaskData(TaskData data) {
+    private Bundle getTaskData(TaskData data,int position) {
         Bundle bundle = new Bundle();
         if (data != null) {
             bundle.putString("bName", data.getbName());
@@ -281,6 +313,7 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
             bundle.putString("mPosId", data.getMakePosId());
             bundle.putString("mPos", data.getPos());
             bundle.putString("mPedId", String.valueOf(data.getPedID()));
+            bundle.putInt("mPosition", position);
         }
         return bundle;
     }

@@ -1,6 +1,7 @@
 package com.atguigu.chinarallway.RequstServer;
 
 import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 import com.atguigu.chinarallway.Bean.AllStaticBean;
@@ -33,7 +34,7 @@ public class UpDataRequest {
 
     /*修改数据库各个表的通用请求接口*/
     public static void ModifyDataRequest(final String type, final ModifyData[] pk, final ModifyData[] modifyData,
-                                         final int success, final int fall, final Handler mHandler) {
+                                         final int success, final int fall, final Handler mHandler,final int position) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -57,7 +58,10 @@ public class UpDataRequest {
                         String content = mResponse.body().string();
                         Log.e("RequestFall", content);
                         if (new JSONObject(content).getInt("code")>=1) {
-                            mHandler.sendEmptyMessage(success);
+                            Message message = new Message();
+                            message.what = success;
+                            message.arg1 = position;
+                            mHandler.sendMessage(message);
                         }else
                         {
                             mHandler.sendEmptyMessage(fall);

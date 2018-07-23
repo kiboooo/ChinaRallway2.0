@@ -267,7 +267,7 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
                                     new ModifyData("status", URLEncoder.encode(BeamStateChange, "UTF-8"))
                             };
 
-                            UpDataRequest.ModifyDataRequest("beam", pk, modifyData, changeBeamStatus_SUCCESS, changeBeamStatus_FALL, max_handler);
+                            UpDataRequest.ModifyDataRequest("beam", pk, modifyData, changeBeamStatus_SUCCESS, changeBeamStatus_FALL, max_handler,0);
                         } catch (UnsupportedEncodingException e) {
                             e.printStackTrace();
                         }
@@ -291,7 +291,7 @@ public class RepairBeamActivity extends AppCompatActivity implements View.OnClic
                                 new ModifyData("pos", URLEncoder.encode(StorePosition, "UTF-8"))
                         };
 
-                        UpDataRequest.ModifyDataRequest("store", pk, modifyData, changeBeamStatus_SUCCESS, changeBeamStatus_FALL, max_handler);
+                        UpDataRequest.ModifyDataRequest("store", pk, modifyData, changeBeamStatus_SUCCESS, changeBeamStatus_FALL, max_handler, 0);
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }

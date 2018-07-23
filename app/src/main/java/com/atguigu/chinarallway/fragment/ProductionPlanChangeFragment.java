@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,8 +30,6 @@ import java.util.List;
 
 public class ProductionPlanChangeFragment extends DialogFragment {
 
-    //    private Spinner bridgeName;
-//    private Spinner bridgeNumber;
     private TextView bridgeName;
     private TextView bridgeNumber;
     private Spinner builde;
@@ -40,7 +37,6 @@ public class ProductionPlanChangeFragment extends DialogFragment {
     private Spinner saveNumber;
     private Spinner saveLocation;
     private MaterialCalendarView start;
-//    private MaterialCalendarView end;
 
     private List<Integer> order = new ArrayList<>();
     private List<String> MPnumber = new ArrayList<>();
@@ -72,21 +68,25 @@ public class ProductionPlanChangeFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.fragment_production_plan_change, null);
-        Bundle bundle = getArguments();
+        final Bundle bundle = getArguments();
         bridgeName = view.findViewById(R.id.nameText);
         bridgeName.setText(bundle.getString("bName"));
         bridgeNumber = view.findViewById(R.id.numberText);
         bridgeNumber.setText(bundle.getString("bId"));
         builde = view.findViewById(R.id.buildSpinner);
-        initMakePositionOrder(Integer.valueOf(bundle.getString("mOrder")));
+        orderNum = Integer.valueOf(bundle.getString("mOrder"));
+        initMakePositionOrder(orderNum);
         builde.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.spinner_item_production, order));
         buildeLocation = view.findViewById(R.id.buildNumberSpinner);
-        initMakePositionNum(bundle.getString("mPosId"));
+        orderLocation = bundle.getString("mPosId");
+        initMakePositionNum(orderLocation);
         buildeLocation.setAdapter(new ArrayAdapter<>(getActivity(),
                 R.layout.spinner_item_production, MPnumber));
         saveNumber = view.findViewById(R.id.saveSpinner);
         saveLocation = view.findViewById(R.id.saveLocationSpinner);
-        initSave(bundle.getString("mPedId"), bundle.getString("mPos"));
+        storeNum = bundle.getString("mPedId");
+        storeLocation = bundle.getString("mPos");
+        initSave(storeNum, storeLocation);
         saveNumber.setAdapter(new ArrayAdapter<>(getActivity(),
                 R.layout.spinner_item_production, saveIDList));
         saveLocation.setAdapter(new ArrayAdapter<>(getActivity(),
@@ -98,14 +98,14 @@ public class ProductionPlanChangeFragment extends DialogFragment {
                 newDate = date;
             }
         });
-//        end = view.findViewById(R.id.dateEnd);
         onBind_Spinner();
         builder.setView(view)
                 .setPositiveButton("完  成",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int id) {
-                                mOnTaskDataChangeBack.changeBackTaskData(orderNum,orderLocation,storeNum,storeLocation,newDate);
+                                mOnTaskDataChangeBack.changeBackTaskData(bundle.getString("bName"),bundle.getString("bId"),
+                                        orderNum,orderLocation,storeNum,storeLocation,newDate,bundle.getInt("mPosition"));
                             }
                         })
                 .setNegativeButton("取  消", null);
