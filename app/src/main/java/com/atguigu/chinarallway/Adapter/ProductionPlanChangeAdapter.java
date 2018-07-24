@@ -10,7 +10,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +28,6 @@ import com.atguigu.chinarallway.RequstServer.DeleteRequest;
 import com.atguigu.chinarallway.RequstServer.ManagerRequst;
 import com.atguigu.chinarallway.RequstServer.UpDataRequest;
 import com.atguigu.chinarallway.fragment.ProductionPlanChangeFragment;
-import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import org.json.JSONArray;
 
@@ -116,6 +114,7 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
                     int mPosition = msg.arg1;
                     notifyItemRemoved(mPosition);
                     notifyDataSetChanged();
+                    Toast.makeText(mContext, "修改成功", Toast.LENGTH_SHORT).show();
                     break;
                 case UpdateFALL:
                     progressDialog.hide();
@@ -197,7 +196,7 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
                 fragment = new ProductionPlanChangeFragment();
                 fragment.setOnTaskDataChangeBack(new OnTaskDataChangeBack() {
                     @Override
-                    public void changeBackTaskData(String bName, String bId, int orderNum, String orderLocation, String storeNum, String storeLocation, CalendarDay date,int p) {
+                    public void changeBackTaskData(String bName, String bId, int orderNum, String orderLocation, String storeNum, String storeLocation,int p) {
                         TaskData mData = new TaskData();
                         mData.setbName(bName);
                         mData.setbID(bId);
@@ -205,11 +204,7 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
                         mData.setMakePosId(orderLocation);
                         mData.setPedID(Short.parseShort(storeNum));
                         mData.setPos(storeLocation);
-                        if (date != null) {
-                            mData.setTaskDate(new Date(date.getDate().getTime()));
-                        } else {
-                            mData.setTaskDate(data.getTaskDate());
-                        }
+                        mData.setTaskDate(data.getTaskDate());
                         TaskDatas[p] = mData;
                         AllStaticBean.TaskData[p] = mData;
                         progressDialog.show();
@@ -223,10 +218,8 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
                                     new ModifyData("makePosId", URLEncoder.encode(mData.getMakePosId(), "UTF-8")),
                                     new ModifyData("pedID", URLEncoder.encode(String.valueOf(mData.getPedID()), "UTF-8")),
                                     new ModifyData("pos", URLEncoder.encode(mData.getPos(), "UTF-8")),
-                                    new ModifyData("permit", URLEncoder.encode(mData.isPermit()?"0":"1", "UTF-8")),
-                                    new ModifyData("taskDate", URLEncoder.encode(AllStaticBean.formatter.format(mData.getTaskDate().getTime()), "UTF-8"))
+                                    new ModifyData("permit", URLEncoder.encode(mData.isPermit()?"0":"1", "UTF-8"))
                             };
-
                             UpDataRequest.ModifyDataRequest("task", pk, modifyData, UpdateSUCCESS, UpdateFALL, mHandler, p);
                         } catch (UnsupportedEncodingException e) {
                             e.printStackTrace();
@@ -308,7 +301,6 @@ public class ProductionPlanChangeAdapter extends RecyclerView.Adapter<Production
         if (data != null) {
             bundle.putString("bName", data.getbName());
             bundle.putString("bId", data.getbID());
-            Log.e("mOrder",data.getMakeOrder());
             bundle.putString("mOrder", data.getMakeOrder());
             bundle.putString("mPosId", data.getMakePosId());
             bundle.putString("mPos", data.getPos());

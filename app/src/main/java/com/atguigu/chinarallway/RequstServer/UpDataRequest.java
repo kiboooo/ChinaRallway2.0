@@ -52,7 +52,7 @@ public class UpDataRequest {
                         .url(AllStaticBean.URL + AllStaticBean.ModifyURL)
                         .post(body)
                         .build();
-                    Log.e("Body", new Gson().toJson(pk) + "  " + new Gson().toJson(modifyData));
+                    Log.e("ModifyDataRequest Body", new Gson().toJson(pk) + "  " + new Gson().toJson(modifyData));
                     Response mResponse = okHttpClient.newCall(request).execute();
                     if (mResponse.isSuccessful()) {
                         String content = mResponse.body().string();
@@ -67,7 +67,7 @@ public class UpDataRequest {
                             mHandler.sendEmptyMessage(fall);
                         }
                     } else {
-                        Log.e("RequestFall", mResponse.body().string());
+                        Log.e("ModifyDataRequest Fall", mResponse.body().string());
                         mHandler.sendEmptyMessage(fall);
                     }
                 } catch (IOException | JSONException e) {

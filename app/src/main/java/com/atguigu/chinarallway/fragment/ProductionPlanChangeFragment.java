@@ -1,14 +1,10 @@
 package com.atguigu.chinarallway.fragment;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,9 +17,6 @@ import com.atguigu.chinarallway.Bean.MakePosition;
 import com.atguigu.chinarallway.Bean.StorePositionData;
 import com.atguigu.chinarallway.Interface.OnTaskDataChangeBack;
 import com.atguigu.chinarallway.R;
-import com.prolificinteractive.materialcalendarview.CalendarDay;
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
-import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +29,7 @@ public class ProductionPlanChangeFragment extends DialogFragment {
     private Spinner buildeLocation;
     private Spinner saveNumber;
     private Spinner saveLocation;
-    private MaterialCalendarView start;
+//    private MaterialCalendarView start;
 
     private List<Integer> order = new ArrayList<>();
     private List<String> MPnumber = new ArrayList<>();
@@ -47,21 +40,21 @@ public class ProductionPlanChangeFragment extends DialogFragment {
     private String orderLocation;
     private String storeNum;
     private String storeLocation;
-    private CalendarDay newDate;
+//    private CalendarDay newDate;
 
     private OnTaskDataChangeBack mOnTaskDataChangeBack;
 
     public void setOnTaskDataChangeBack(OnTaskDataChangeBack onTaskDataChangeBack){
         mOnTaskDataChangeBack = onTaskDataChangeBack;
     }
-
-    @SuppressLint("HandlerLeak")
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-        }
-    };
+//
+//    @SuppressLint("HandlerLeak")
+//    private Handler mHandler = new Handler() {
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//        }
+//    };
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -91,13 +84,13 @@ public class ProductionPlanChangeFragment extends DialogFragment {
                 R.layout.spinner_item_production, saveIDList));
         saveLocation.setAdapter(new ArrayAdapter<>(getActivity(),
                 R.layout.spinner_item_production, saveLocationList));
-        start = view.findViewById(R.id.dateBegin);
-        start.setOnDateChangedListener(new OnDateSelectedListener() {
-            @Override
-            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
-                newDate = date;
-            }
-        });
+//        start = view.findViewById(R.id.dateBegin);
+//        start.setOnDateChangedListener(new OnDateSelectedListener() {
+//            @Override
+//            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+//                newDate = date;
+//            }
+//        });
         onBind_Spinner();
         builder.setView(view)
                 .setPositiveButton("完  成",
@@ -105,7 +98,7 @@ public class ProductionPlanChangeFragment extends DialogFragment {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int id) {
                                 mOnTaskDataChangeBack.changeBackTaskData(bundle.getString("bName"),bundle.getString("bId"),
-                                        orderNum,orderLocation,storeNum,storeLocation,newDate,bundle.getInt("mPosition"));
+                                        orderNum,orderLocation,storeNum,storeLocation,bundle.getInt("mPosition"));
                             }
                         })
                 .setNegativeButton("取  消", null);
@@ -187,8 +180,9 @@ public class ProductionPlanChangeFragment extends DialogFragment {
         saveLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                storeLocation = saveLocationList.get(i);
-
+                if (saveLocationList.get(i).split("_").length > 2) {
+                    storeLocation = saveLocationList.get(i).split("_")[1];
+                }
             }
 
             @Override
